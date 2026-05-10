@@ -575,6 +575,106 @@ footer{
 ::-webkit-scrollbar-thumb{background:rgba(0,81,135,0.5);border-radius:5px}
 
 /* ===========================
+   TEMA CLARO — SISTEMA
+=========================== */
+body{background:#f0f7ff;color:#002a47}
+
+/* Navbar claro */
+nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,135,0.1)!important;box-shadow:0 2px 20px rgba(0,81,135,0.07)}
+.nav-links a{color:rgba(0,42,71,0.65)!important}
+.nav-links a:hover{color:#005187!important}
+.nav-logo-txt{color:#002a47!important}
+.nav-logo-sub{color:#005187!important}
+
+/* Stats — card branco */
+#stats{background:#fff}
+.stats-inner{background:#fff!important;border-color:rgba(0,81,135,0.08)!important;box-shadow:0 10px 50px rgba(0,81,135,0.07);backdrop-filter:none!important}
+.stats-inner::before{display:none}
+.stat-num{background:linear-gradient(135deg,#005187,#4d82bc)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important}
+.stat-lbl{color:#4d82bc!important}
+.stat-div{background:rgba(0,81,135,0.1)!important}
+
+/* Tags e títulos de seções claras */
+#features .section-tag,#como .section-tag,#depoimentos .section-tag,#planos .section-tag{background:rgba(0,81,135,0.07)!important;border-color:rgba(0,81,135,0.15)!important;color:#005187!important}
+#features .section-title,#como .section-title,#depoimentos .section-title,#planos .section-title{color:#002a47!important}
+#features .section-sub,#como .section-sub,#depoimentos .section-sub,#planos .section-sub{color:#4d82bc!important}
+
+/* Features — fundo azul claro, cards brancos */
+#features{background:#f0f7ff}
+.feat-card{background:#fff!important;border-color:rgba(0,81,135,0.08)!important;box-shadow:0 4px 18px rgba(0,81,135,0.06)!important}
+.feat-card:hover{border-color:rgba(0,81,135,0.2)!important;box-shadow:0 20px 50px rgba(0,81,135,0.12)!important}
+.feat-card::before{background:radial-gradient(circle at 50% 0%,rgba(0,81,135,0.06) 0%,transparent 60%)!important}
+.feat-title{color:#002a47!important}
+.feat-desc{color:#4d82bc!important}
+
+/* How it works — branco */
+#como{background:#fff}
+.step-title{color:#002a47!important}
+.step-desc{color:#4d82bc!important}
+.steps-grid::before{background:linear-gradient(90deg,transparent,rgba(0,81,135,0.15),rgba(0,81,135,0.15),transparent)!important}
+
+/* Depoimentos — azul claro */
+#depoimentos{background:#f0f7ff!important}
+.test-card{background:#fff!important;border-color:rgba(0,81,135,0.08)!important;box-shadow:0 4px 18px rgba(0,81,135,0.06);backdrop-filter:none!important}
+.test-text{color:rgba(0,42,71,0.7)!important;font-style:italic}
+.test-name{color:#002a47!important}
+.test-clinic{color:#005187!important}
+.test-stars{color:#f59e0b}
+
+/* ===========================
+   PLANOS & PREÇOS
+=========================== */
+#planos{padding:100px 5%;background:#fff}
+.plans-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:28px;
+  max-width:960px;margin:0 auto;margin-top:56px;
+}
+.plan-card{
+  background:#fff;border-radius:20px;padding:40px;
+  border:2px solid rgba(0,81,135,0.1);
+  position:relative;
+  transition:all .3s;
+}
+.plan-card:hover{box-shadow:0 20px 60px rgba(0,81,135,0.12);border-color:rgba(0,81,135,0.25);transform:translateY(-4px)}
+.plan-card.featured{border-color:#005187;box-shadow:0 16px 50px rgba(0,81,135,0.15)}
+.plan-tag{
+  display:inline-block;padding:4px 14px;border-radius:99px;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  color:#fff;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.plan-name{font-family:"Lora",serif;font-size:32px;font-weight:700;color:#002a47;margin-bottom:12px}
+.plan-desc{font-size:14px;color:#4d82bc;line-height:1.6;margin-bottom:24px}
+.plan-price{display:flex;align-items:baseline;gap:6px;margin-bottom:18px}
+.plan-val{font-family:"Lora",serif;font-size:56px;font-weight:700;color:#002a47;line-height:1}
+.plan-per{font-size:16px;color:#4d82bc;font-weight:600}
+.plan-val-lg{font-family:"Lora",serif;font-size:36px;font-weight:700;color:#002a47;line-height:1.2}
+.plan-note{font-size:13px;color:#4d82bc;margin-bottom:28px;line-height:1.5}
+.plan-note strong{color:#002a47}
+.plan-btn{
+  display:block;width:100%;padding:15px;border-radius:50px;text-align:center;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  color:#fff;font-size:15px;font-weight:700;text-decoration:none;
+  transition:all .25s;margin-bottom:28px;
+  box-shadow:0 6px 24px rgba(0,81,135,0.3);
+}
+.plan-btn:hover{box-shadow:0 10px 35px rgba(0,81,135,0.45);transform:translateY(-2px)}
+.plan-features-title{font-size:12.5px;font-weight:700;color:#002a47;text-transform:uppercase;letter-spacing:.8px;margin-bottom:16px;padding-top:24px;border-top:1px solid rgba(0,81,135,0.08)}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan-features li{
+  font-size:13.5px;color:#002a47;
+  display:flex;align-items:flex-start;gap:10px;line-height:1.5;
+}
+.plan-features li::before{
+  content:'';width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+  background-size:13px;background-position:center;background-repeat:no-repeat;
+}
+.plan-features li.bold{font-weight:700}
+.plan-ver-mais{display:block;text-align:center;margin-top:20px;font-size:13px;color:#4d82bc;text-decoration:underline;cursor:pointer}
+
+/* ===========================
    RESPONSIVE
 =========================== */
 @media(max-width:1024px){
@@ -586,6 +686,7 @@ footer{
   .stats-inner{grid-template-columns:1fr 1fr;gap:30px}
   .features-grid{grid-template-columns:1fr 1fr}
   .mod-tabbar{flex-wrap:wrap}
+  .plans-grid{grid-template-columns:1fr}
   .steps-grid{grid-template-columns:1fr 1fr;gap:30px}
   .steps-grid::before{display:none}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -631,7 +732,7 @@ footer{
   <ul class="nav-links">
     <li><a href="#features">Funcionalidades</a></li>
     <li><a href="#modules">Módulos</a></li>
-    <li><a href="#como">Como funciona</a></li>
+    <li><a href="#planos">Planos</a></li>
     <li><a href="#depoimentos">Depoimentos</a></li>
   </ul>
   <a href="#cta" class="nav-cta"><span class="material-icons-outlined">rocket_launch</span>Solicitar Demo</a>
@@ -1037,6 +1138,66 @@ footer{
       </div>
     </div>
     <div class="mockup-shadow"></div>
+  </div>
+</section>
+
+<!-- ===== PLANOS ===== -->
+<section id="planos">
+  <div class="section-tag"><span class="material-icons-outlined" style="font-size:14px">sell</span>Planos & Preços</div>
+  <h2 class="section-title" style="text-align:center">Nós temos o plano ideal para<br>descomplicar a gestão da sua clínica</h2>
+  <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">Não precisa comparar diversos planos para ter todas as ferramentas que você necessita. O sistema é completo sem ser complexo.</p>
+
+  <div class="plans-grid">
+
+    <!-- Plano Essencial -->
+    <div class="plan-card featured">
+      <div class="plan-tag">Mais Popular</div>
+      <div class="plan-name">Plano Essencial</div>
+      <div class="plan-desc">Para consultórios e clínicas que querem organizar e automatizar seus processos.</div>
+      <div class="plan-price">
+        <span class="plan-val">499</span>
+        <span class="plan-per">/mês</span>
+      </div>
+      <div class="plan-note">
+        <strong>Pacote com 3 profissionais de saúde inclusos</strong><br>
+        Valores promocionais para contratação de profissionais adicionais
+      </div>
+      <a href="#cta" class="plan-btn">Solicitar uma demonstração</a>
+      <div class="plan-features-title">Recursos disponíveis no plano:</div>
+      <ul class="plan-features">
+        <li class="bold">Secretárias e administradores ilimitados</li>
+        <li class="bold">Envio de mensagens WhatsApp ilimitados</li>
+        <li class="bold">Módulo de emissão de NFe ilimitado</li>
+        <li>3 usuários profissionais de saúde inclusos</li>
+        <li>Prontuários 100% personalizáveis</li>
+        <li>Implantação online gratuita</li>
+        <li>Suporte contínuo com 98,8% de aprovação</li>
+      </ul>
+      <span class="plan-ver-mais">Ver todos os recursos disponíveis</span>
+    </div>
+
+    <!-- Plano Enterprise -->
+    <div class="plan-card">
+      <div class="plan-name">Plano Enterprise</div>
+      <div class="plan-desc">Ideal para clínicas com mais de 15 profissionais de saúde, franquias, hospitais-dia e universidades.</div>
+      <div class="plan-price">
+        <span class="plan-val-lg">Vamos conversar</span>
+      </div>
+      <div class="plan-note">Preços especiais</div>
+      <a href="#cta" class="plan-btn">Fale com um especialista</a>
+      <div class="plan-features-title">Tudo do plano Essencial, mais:</div>
+      <ul class="plan-features">
+        <li>Preços sob medida para negócios que estão em pleno crescimento</li>
+        <li>Suporte personalizado com profissional de atendimento exclusivo</li>
+        <li>Consultoria para otimização e utilização dos recursos avançados</li>
+        <li>Painel de chamadas para controle de senhas</li>
+        <li>Sistema de controle de estoque avançado</li>
+        <li>API para integrações</li>
+        <li>Multi-unidades e relatórios consolidados</li>
+      </ul>
+      <span class="plan-ver-mais">Ver todos os recursos disponíveis</span>
+    </div>
+
   </div>
 </section>
 
