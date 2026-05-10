@@ -377,8 +377,13 @@ nav{
   0%,100%{transform:rotateY(-10deg) rotateX(6deg) translateY(0)}
   50%{transform:rotateY(-10deg) rotateX(6deg) translateY(-10px)}
 }
-.mod-body{display:none;padding:18px;flex-direction:column;gap:12px}
+.mod-body{display:none;flex-direction:column;gap:12px}
 .mod-body.active{display:flex}
+/* Quando contém imagem real */
+.mod-body.has-img{padding:0}
+.mod-scr-img{width:100%;display:block;border-radius:0 0 14px 14px;max-height:420px;object-fit:cover;object-position:top}
+/* Sem imagem — padding normal */
+.mod-body:not(.has-img){padding:18px}
 /* Page header */
 .sp-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
 .sp-title{font-family:"Lora",serif;font-size:22px;font-weight:700;color:#002a47}
@@ -595,9 +600,18 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
 .stat-div{background:rgba(0,81,135,0.1)!important}
 
 /* Tags e títulos de seções claras */
-#features .section-tag,#como .section-tag,#depoimentos .section-tag,#planos .section-tag{background:rgba(0,81,135,0.07)!important;border-color:rgba(0,81,135,0.15)!important;color:#005187!important}
-#features .section-title,#como .section-title,#depoimentos .section-title,#planos .section-title{color:#002a47!important}
-#features .section-sub,#como .section-sub,#depoimentos .section-sub,#planos .section-sub{color:#4d82bc!important}
+#features .section-tag,#como .section-tag,#depoimentos .section-tag,#planos .section-tag,
+#modules .section-tag{background:rgba(0,81,135,0.07)!important;border-color:rgba(0,81,135,0.15)!important;color:#005187!important}
+#features .section-title,#como .section-title,#depoimentos .section-title,#planos .section-title,
+#modules .section-title{color:#002a47!important}
+#features .section-sub,#como .section-sub,#depoimentos .section-sub,#planos .section-sub,
+#modules .section-sub{color:#4d82bc!important}
+
+/* Tabs de módulos — texto escuro sobre fundo claro */
+.mod-tb{color:rgba(0,42,71,0.45)!important;border-bottom-color:transparent!important}
+.mod-tb:hover{color:rgba(0,42,71,0.75)!important}
+.mod-tb.active{color:#005187!important;border-bottom-color:#005187!important}
+.mod-tabbar{border-bottom-color:rgba(0,81,135,0.12)!important}
 
 /* Features — fundo azul claro, cards brancos */
 #features{background:#f0f7ff}
@@ -988,7 +1002,8 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
         </div>
 
         <!-- Screen 0: Agenda -->
-        <div class="mod-body active" id="mscr-0">
+        <div class="mod-body has-img active" id="mscr-0">
+          <img src="assets/screenshots/agenda.png" alt="Agendamentos" class="mod-scr-img" onerror="this.closest('.mod-body').classList.remove('has-img');this.remove()">
           <div class="mock-kpi-row">
             <div class="mock-kpi"><div class="mock-kpi-val">14</div><div class="mock-kpi-lbl">Hoje</div></div>
             <div class="mock-kpi"><div class="mock-kpi-val">9</div><div class="mock-kpi-lbl">Confirmados</div></div>
@@ -1021,7 +1036,8 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
         </div>
 
         <!-- Screen 1: Financeiro -->
-        <div class="mod-body" id="mscr-1">
+        <div class="mod-body has-img" id="mscr-1">
+          <img src="assets/screenshots/financeiro.png" alt="Financeiro" class="mod-scr-img" onerror="this.closest('.mod-body').classList.remove('has-img');this.remove()">
           <div class="mock-kpi-row">
             <div class="mock-kpi"><div class="mock-kpi-val">R$28k</div><div class="mock-kpi-lbl">Receita</div></div>
             <div class="mock-kpi"><div class="mock-kpi-val">R$9k</div><div class="mock-kpi-lbl">Despesas</div></div>
@@ -1054,7 +1070,8 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
         </div>
 
         <!-- Screen 2: Estoque -->
-        <div class="mod-body" id="mscr-2">
+        <div class="mod-body has-img" id="mscr-2">
+          <img src="assets/screenshots/estoque.png" alt="Estoque" class="mod-scr-img" onerror="this.closest('.mod-body').classList.remove('has-img');this.remove()">
           <div class="mock-kpi-row">
             <div class="mock-kpi"><div class="mock-kpi-val">28</div><div class="mock-kpi-lbl">Produtos</div></div>
             <div class="mock-kpi"><div class="mock-kpi-val">4</div><div class="mock-kpi-lbl">Alertas</div></div>
@@ -1087,7 +1104,8 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
         </div>
 
         <!-- Screen 3: Vendas -->
-        <div class="mod-body" id="mscr-3">
+        <div class="mod-body has-img" id="mscr-3">
+          <img src="assets/screenshots/vendas.png" alt="Vendas" class="mod-scr-img" onerror="this.closest('.mod-body').classList.remove('has-img');this.remove()">
           <div class="mock-kpi-row">
             <div class="mock-kpi"><div class="mock-kpi-val">R$2,4k</div><div class="mock-kpi-lbl">Hoje</div></div>
             <div class="mock-kpi"><div class="mock-kpi-val">8</div><div class="mock-kpi-lbl">Vendas</div></div>
@@ -1120,7 +1138,8 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
         </div>
 
         <!-- Screen 4: Clientes & CRM -->
-        <div class="mod-body" id="mscr-4">
+        <div class="mod-body has-img" id="mscr-4">
+          <img src="assets/screenshots/clientes.png" alt="Clientes & CRM" class="mod-scr-img" onerror="this.closest('.mod-body').classList.remove('has-img');this.remove()">
           <div class="mock-kpi-row">
             <div class="mock-kpi"><div class="mock-kpi-val">312</div><div class="mock-kpi-lbl">Clientes</div></div>
             <div class="mock-kpi"><div class="mock-kpi-val">47</div><div class="mock-kpi-lbl">Novos</div></div>
