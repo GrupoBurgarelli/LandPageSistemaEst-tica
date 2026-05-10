@@ -624,55 +624,71 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
 /* ===========================
    PLANOS & PREÇOS
 =========================== */
-#planos{padding:100px 5%;background:#fff}
+#planos{padding:100px 5%;background:#f0f7ff}
 .plans-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:28px;
-  max-width:960px;margin:0 auto;margin-top:56px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  max-width:1100px;margin:56px auto 0;
+  align-items:start;
 }
 .plan-card{
-  background:#fff;border-radius:20px;padding:40px;
+  background:#fff;border-radius:16px;
   border:2px solid rgba(0,81,135,0.1);
-  position:relative;
-  transition:all .3s;
+  position:relative;overflow:visible;
+  transition:all .3s;display:flex;flex-direction:column;
 }
-.plan-card:hover{box-shadow:0 20px 60px rgba(0,81,135,0.12);border-color:rgba(0,81,135,0.25);transform:translateY(-4px)}
-.plan-card.featured{border-color:#005187;box-shadow:0 16px 50px rgba(0,81,135,0.15)}
-.plan-tag{
-  display:inline-block;padding:4px 14px;border-radius:99px;
+.plan-card:hover{box-shadow:0 20px 60px rgba(0,81,135,0.13);transform:translateY(-4px)}
+.plan-card.featured{
+  border-color:#005187;
+  box-shadow:0 16px 50px rgba(0,81,135,0.18);
+  transform:translateY(-8px);
+}
+.plan-card.featured:hover{transform:translateY(-12px)}
+
+/* Banner topo do featured */
+.plan-banner{
+  position:absolute;top:-16px;left:50%;transform:translateX(-50%);
   background:linear-gradient(135deg,#005187,#4d82bc);
-  color:#fff;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
-  margin-bottom:16px;
+  color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  padding:5px 20px;border-radius:99px;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(0,81,135,0.35);
 }
-.plan-name{font-family:"Lora",serif;font-size:32px;font-weight:700;color:#002a47;margin-bottom:12px}
-.plan-desc{font-size:14px;color:#4d82bc;line-height:1.6;margin-bottom:24px}
-.plan-price{display:flex;align-items:baseline;gap:6px;margin-bottom:18px}
-.plan-val{font-family:"Lora",serif;font-size:56px;font-weight:700;color:#002a47;line-height:1}
-.plan-per{font-size:16px;color:#4d82bc;font-weight:600}
-.plan-val-lg{font-family:"Lora",serif;font-size:36px;font-weight:700;color:#002a47;line-height:1.2}
-.plan-note{font-size:13px;color:#4d82bc;margin-bottom:28px;line-height:1.5}
-.plan-note strong{color:#002a47}
-.plan-btn{
-  display:block;width:100%;padding:15px;border-radius:50px;text-align:center;
-  background:linear-gradient(135deg,#005187,#4d82bc);
-  color:#fff;font-size:15px;font-weight:700;text-decoration:none;
-  transition:all .25s;margin-bottom:28px;
-  box-shadow:0 6px 24px rgba(0,81,135,0.3);
+
+/* Cabeçalho do card */
+.plan-head{padding:26px 28px 0}
+.plan-badge-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.plan-badge{
+  display:inline-block;padding:5px 16px;border-radius:8px;
+  font-size:12px;font-weight:800;letter-spacing:.3px;
 }
-.plan-btn:hover{box-shadow:0 10px 35px rgba(0,81,135,0.45);transform:translateY(-2px)}
-.plan-features-title{font-size:12.5px;font-weight:700;color:#002a47;text-transform:uppercase;letter-spacing:.8px;margin-bottom:16px;padding-top:24px;border-top:1px solid rgba(0,81,135,0.08)}
-.plan-features{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan-badge.lite{background:#dbeafe;color:#1e40af}
+.plan-badge.plus{background:#fff7ed;color:#c2410c}
+.plan-badge.ultra{background:#ede9fe;color:#6d28d9}
+.plan-ico{width:32px;height:32px;opacity:.25}
+.plan-sub{font-size:13px;color:#4d82bc;margin-bottom:0;padding-bottom:20px;border-bottom:2px solid rgba(0,81,135,0.08)}
+.plan-sub span{color:#005187;font-weight:600}
+
+/* Preço */
+.plan-pricing{padding:22px 28px}
+.plan-price{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.plan-currency{font-size:20px;font-weight:700;color:#002a47;margin-top:4px}
+.plan-val{font-family:"Lora",serif;font-size:54px;font-weight:700;color:#002a47;line-height:1}
+.plan-per{font-size:14px;color:#4d82bc;font-weight:600}
+.plan-period-note{font-size:12px;color:rgba(0,42,71,0.45);margin-top:2px}
+
+/* Features */
+.plan-features-wrap{padding:0 28px 28px;flex:1}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:9px}
 .plan-features li{
   font-size:13.5px;color:#002a47;
-  display:flex;align-items:flex-start;gap:10px;line-height:1.5;
-}
-.plan-features li::before{
-  content:'';width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;
-  background:linear-gradient(135deg,#005187,#4d82bc);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
-  background-size:13px;background-position:center;background-repeat:no-repeat;
+  display:flex;align-items:flex-start;gap:9px;line-height:1.45;
 }
 .plan-features li.bold{font-weight:700}
-.plan-ver-mais{display:block;text-align:center;margin-top:20px;font-size:13px;color:#4d82bc;text-decoration:underline;cursor:pointer}
+.plan-features li.off{color:rgba(0,42,71,0.35)}
+.pf-check{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.pf-check.on{background:linear-gradient(135deg,#059669,#34d399)}
+.pf-check.off{background:rgba(0,42,71,0.08)}
+.pf-check .material-icons-outlined{font-size:12px;color:#fff}
+.pf-check.off .material-icons-outlined{color:rgba(0,42,71,0.3)}
 
 /* ===========================
    RESPONSIVE
@@ -687,6 +703,7 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
   .features-grid{grid-template-columns:1fr 1fr}
   .mod-tabbar{flex-wrap:wrap}
   .plans-grid{grid-template-columns:1fr}
+  .plan-card.featured{transform:none}
   .steps-grid{grid-template-columns:1fr 1fr;gap:30px}
   .steps-grid::before{display:none}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -1149,53 +1166,93 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
 
   <div class="plans-grid">
 
-    <!-- Plano Essencial -->
-    <div class="plan-card featured">
-      <div class="plan-tag">Mais Popular</div>
-      <div class="plan-name">Plano Essencial</div>
-      <div class="plan-desc">Para consultórios e clínicas que querem organizar e automatizar seus processos.</div>
-      <div class="plan-price">
-        <span class="plan-val">499</span>
-        <span class="plan-per">/mês</span>
+    <!-- LITE -->
+    <div class="plan-card">
+      <div class="plan-head">
+        <div class="plan-badge-row">
+          <span class="plan-badge lite">Lite</span>
+          <span class="material-icons-outlined plan-ico">workspace_premium</span>
+        </div>
+        <div class="plan-sub">Plano de entrada · <span>até 5 funcionários</span></div>
       </div>
-      <div class="plan-note">
-        <strong>Pacote com 3 profissionais de saúde inclusos</strong><br>
-        Valores promocionais para contratação de profissionais adicionais
+      <div class="plan-pricing">
+        <div class="plan-price">
+          <span class="plan-currency">R$</span>
+          <span class="plan-val">99</span>
+          <span class="plan-per">,99/mês</span>
+        </div>
+        <div class="plan-period-note">Cobrado mensalmente</div>
+        <a href="#cta" style="display:block;margin-top:18px;padding:13px;border-radius:50px;text-align:center;background:linear-gradient(135deg,#1e40af,#4d82bc);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s">Começar agora</a>
       </div>
-      <a href="#cta" class="plan-btn">Solicitar uma demonstração</a>
-      <div class="plan-features-title">Recursos disponíveis no plano:</div>
-      <ul class="plan-features">
-        <li class="bold">Secretárias e administradores ilimitados</li>
-        <li class="bold">Envio de mensagens WhatsApp ilimitados</li>
-        <li class="bold">Módulo de emissão de NFe ilimitado</li>
-        <li>3 usuários profissionais de saúde inclusos</li>
-        <li>Prontuários 100% personalizáveis</li>
-        <li>Implantação online gratuita</li>
-        <li>Suporte contínuo com 98,8% de aprovação</li>
-      </ul>
-      <span class="plan-ver-mais">Ver todos os recursos disponíveis</span>
+      <div class="plan-features-wrap">
+        <ul class="plan-features">
+          <li><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Acesso completo ao sistema</li>
+          <li><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Agendamentos, pacientes, financeiro, estoque, contratos e muito mais</li>
+          <li class="bold"><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Até 5 funcionários cadastrados</li>
+          <li><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Suporte por e-mail</li>
+          <li class="off"><span class="pf-check off"><span class="material-icons-outlined">close</span></span>Atendente virtual WhatsApp</li>
+          <li class="off"><span class="pf-check off"><span class="material-icons-outlined">close</span></span>Gerente de conta dedicado</li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Plano Enterprise -->
-    <div class="plan-card">
-      <div class="plan-name">Plano Enterprise</div>
-      <div class="plan-desc">Ideal para clínicas com mais de 15 profissionais de saúde, franquias, hospitais-dia e universidades.</div>
-      <div class="plan-price">
-        <span class="plan-val-lg">Vamos conversar</span>
+    <!-- PLUS (destaque) -->
+    <div class="plan-card featured">
+      <div class="plan-banner">Mais Popular</div>
+      <div class="plan-head">
+        <div class="plan-badge-row">
+          <span class="plan-badge plus">Plus</span>
+          <span class="material-icons-outlined plan-ico">workspace_premium</span>
+        </div>
+        <div class="plan-sub">Crescimento · <span>até 10 funcionários</span></div>
       </div>
-      <div class="plan-note">Preços especiais</div>
-      <a href="#cta" class="plan-btn">Fale com um especialista</a>
-      <div class="plan-features-title">Tudo do plano Essencial, mais:</div>
-      <ul class="plan-features">
-        <li>Preços sob medida para negócios que estão em pleno crescimento</li>
-        <li>Suporte personalizado com profissional de atendimento exclusivo</li>
-        <li>Consultoria para otimização e utilização dos recursos avançados</li>
-        <li>Painel de chamadas para controle de senhas</li>
-        <li>Sistema de controle de estoque avançado</li>
-        <li>API para integrações</li>
-        <li>Multi-unidades e relatórios consolidados</li>
-      </ul>
-      <span class="plan-ver-mais">Ver todos os recursos disponíveis</span>
+      <div class="plan-pricing">
+        <div class="plan-price">
+          <span class="plan-currency">R$</span>
+          <span class="plan-val">199</span>
+          <span class="plan-per">/mês</span>
+        </div>
+        <div class="plan-period-note">Cobrado mensalmente</div>
+        <a href="#cta" style="display:block;margin-top:18px;padding:13px;border-radius:50px;text-align:center;background:linear-gradient(135deg,#005187,#4d82bc);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s;box-shadow:0 6px 24px rgba(0,81,135,0.3)">Começar agora</a>
+      </div>
+      <div class="plan-features-wrap">
+        <ul class="plan-features">
+          <li><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Tudo do plano Lite</li>
+          <li class="bold"><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Atendente virtual via WhatsApp <span style="font-weight:400;font-size:12px;color:#4d82bc">(agendamento automático)</span></li>
+          <li class="bold"><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Até 10 funcionários cadastrados</li>
+          <li><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Suporte prioritário</li>
+          <li class="off"><span class="pf-check off"><span class="material-icons-outlined">close</span></span>Gerente de conta dedicado</li>
+          <li class="off"><span class="pf-check off"><span class="material-icons-outlined">close</span></span>SLA de suporte garantido</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ULTRA -->
+    <div class="plan-card">
+      <div class="plan-head">
+        <div class="plan-badge-row">
+          <span class="plan-badge ultra">Ultra</span>
+          <span class="material-icons-outlined plan-ico">workspace_premium</span>
+        </div>
+        <div class="plan-sub">Redes e clínicas estabelecidas · <span>até 15 funcionários</span></div>
+      </div>
+      <div class="plan-pricing">
+        <div class="plan-price">
+          <span class="plan-currency">R$</span>
+          <span class="plan-val">299</span>
+          <span class="plan-per">/mês</span>
+        </div>
+        <div class="plan-period-note">Cobrado mensalmente</div>
+        <a href="#cta" style="display:block;margin-top:18px;padding:13px;border-radius:50px;text-align:center;background:linear-gradient(135deg,#6d28d9,#a78bfa);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s">Começar agora</a>
+      </div>
+      <div class="plan-features-wrap">
+        <ul class="plan-features">
+          <li><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Tudo do plano Plus</li>
+          <li class="bold"><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Até 15 funcionários cadastrados</li>
+          <li><span class="pf-check on"><span class="material-icons-outlined">check</span></span>Gerente de conta dedicado</li>
+          <li><span class="pf-check on"><span class="material-icons-outlined">check</span></span>SLA de suporte garantido</li>
+        </ul>
+      </div>
     </div>
 
   </div>
