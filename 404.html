@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burgarelli Systems — Software para Clínicas de Estética</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue: #005187;
+  --blue2: #4d82bc;
+  --blue3: #84b6f4;
+  --blue4: #c4dafa;
+  --dark:  #002a47;
+  --white: #fcffff;
+  --green: #059669;
+}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:#000d1a;color:#fff;overflow-x:hidden}
+
+/* ===========================
+   NAVBAR
+=========================== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:18px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  backdrop-filter:blur(20px);
+  background:rgba(0,13,26,0.7);
+  border-bottom:1px solid rgba(132,182,244,0.12);
+  transition:all .3s;
+}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-ico{
+  width:42px;height:42px;border-radius:10px;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 20px rgba(0,81,135,0.5);
+}
+.nav-logo-ico .material-icons-outlined{font-size:22px;color:#fff}
+.nav-logo-txt{font-family:"Lora",serif;font-size:17px;font-weight:700;color:#fff}
+.nav-logo-sub{font-size:10px;color:#84b6f4;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-size:13.5px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  display:flex;align-items:center;gap:7px;
+  padding:11px 24px;border-radius:8px;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  color:#fff;font-size:13px;font-weight:700;
+  text-decoration:none;
+  box-shadow:0 4px 20px rgba(0,81,135,0.4);
+  transition:all .2s;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,81,135,0.55)}
+.nav-cta .material-icons-outlined{font-size:16px}
+
+/* ===========================
+   HERO
+=========================== */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:120px 5% 80px;
+  position:relative;
+  overflow:hidden;
+  gap:40px;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(0,81,135,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(77,130,188,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 10%, rgba(5,150,105,0.08) 0%, transparent 60%),
+    #000d1a;
+}
+.hero-mesh{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(0,81,135,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,81,135,0.07) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse 70% 70% at 80% 50%, black 0%, transparent 80%);
+}
+.hero-orb1{
+  position:absolute;width:500px;height:500px;border-radius:50%;z-index:0;
+  background:radial-gradient(circle,rgba(0,81,135,0.25) 0%,transparent 70%);
+  top:-100px;right:-100px;
+  animation:orbFloat 8s ease-in-out infinite;
+}
+.hero-orb2{
+  position:absolute;width:300px;height:300px;border-radius:50%;z-index:0;
+  background:radial-gradient(circle,rgba(77,130,188,0.2) 0%,transparent 70%);
+  bottom:100px;left:30%;
+  animation:orbFloat 10s ease-in-out infinite reverse;
+}
+@keyframes orbFloat{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-30px) scale(1.05)}
+}
+.hero-left{position:relative;z-index:1}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:99px;
+  background:rgba(0,81,135,0.25);
+  border:1px solid rgba(132,182,244,0.3);
+  backdrop-filter:blur(10px);
+  font-size:12px;font-weight:700;color:#84b6f4;
+  letter-spacing:.5px;margin-bottom:24px;
+}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:#059669;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(5,150,105,0.6)}50%{box-shadow:0 0 0 6px rgba(5,150,105,0)}}
+.hero-title{
+  font-family:"Lora",serif;
+  font-size:clamp(36px,4.5vw,60px);
+  font-weight:700;
+  line-height:1.15;
+  color:#fff;
+  margin-bottom:24px;
+}
+.hero-title span{
+  background:linear-gradient(135deg,#84b6f4,#4d82bc,#005187);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:16px;line-height:1.7;
+  color:rgba(255,255,255,0.65);
+  max-width:480px;margin-bottom:38px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:16px 32px;border-radius:10px;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  color:#fff;font-size:14px;font-weight:700;
+  text-decoration:none;
+  box-shadow:0 8px 30px rgba(0,81,135,0.45);
+  transition:all .25s;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,81,135,0.6)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:16px 28px;border-radius:10px;
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(255,255,255,0.15);
+  color:#fff;font-size:14px;font-weight:700;
+  text-decoration:none;
+  backdrop-filter:blur(10px);
+  transition:all .25s;
+}
+.btn-secondary:hover{background:rgba(255,255,255,0.12);border-color:rgba(132,182,244,0.4);transform:translateY(-2px)}
+.btn-primary .material-icons-outlined,.btn-secondary .material-icons-outlined{font-size:18px}
+.hero-trust{
+  margin-top:36px;
+  display:flex;align-items:center;gap:14px;
+  font-size:12.5px;color:rgba(255,255,255,0.45);
+}
+.hero-trust-dots{display:flex;gap:-4px}
+.hero-trust-dot{
+  width:30px;height:30px;border-radius:50%;
+  border:2px solid #000d1a;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  margin-left:-8px;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;
+}
+.hero-trust-dot:first-child{margin-left:0}
+
+/* DASHBOARD 3D MOCKUP */
+.hero-right{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+.mockup-scene{
+  perspective:1200px;
+  width:100%;max-width:600px;
+}
+.mockup-wrap{
+  transform:rotateY(-15deg) rotateX(8deg);
+  transform-style:preserve-3d;
+  transition:transform .6s ease;
+  animation:mockupFloat 6s ease-in-out infinite;
+}
+.mockup-wrap:hover{transform:rotateY(-5deg) rotateX(4deg)}
+@keyframes mockupFloat{
+  0%,100%{transform:rotateY(-15deg) rotateX(8deg) translateY(0)}
+  50%{transform:rotateY(-15deg) rotateX(8deg) translateY(-12px)}
+}
+.mockup{
+  background:rgba(0,30,60,0.85);
+  border:1px solid rgba(132,182,244,0.25);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:
+    0 0 0 1px rgba(132,182,244,0.1),
+    0 40px 80px rgba(0,0,0,0.6),
+    0 0 60px rgba(0,81,135,0.2);
+  backdrop-filter:blur(20px);
+}
+.mockup-bar{
+  height:40px;background:rgba(0,42,71,0.9);
+  display:flex;align-items:center;padding:0 16px;gap:8px;
+  border-bottom:1px solid rgba(132,182,244,0.1);
+}
+.mockup-dot{width:10px;height:10px;border-radius:50%}
+.mockup-dot.r{background:#ff5f57}.mockup-dot.y{background:#febc2e}.mockup-dot.g{background:#28c840}
+.mockup-title-bar{flex:1;text-align:center;font-size:11px;font-weight:600;color:rgba(132,182,244,0.6)}
+.mockup-body{padding:20px;display:flex;flex-direction:column;gap:14px}
+.mock-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.mock-kpi{
+  background:rgba(0,81,135,0.2);border:1px solid rgba(132,182,244,0.15);
+  border-radius:8px;padding:12px;text-align:center;
+}
+.mock-kpi-val{font-family:"Lora",serif;font-size:18px;font-weight:700;color:#84b6f4}
+.mock-kpi-lbl{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(132,182,244,0.5);margin-top:3px}
+.mock-chart-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mock-chart{
+  background:rgba(0,81,135,0.15);border:1px solid rgba(132,182,244,0.1);
+  border-radius:8px;padding:14px;
+}
+.mock-chart-title{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(132,182,244,0.5);margin-bottom:10px}
+.mock-bars{display:flex;align-items:flex-end;gap:5px;height:50px}
+.mock-bar{
+  flex:1;border-radius:3px 3px 0 0;
+  background:linear-gradient(to top,#005187,#4d82bc);
+  transition:height .3s;
+}
+.mock-pie{width:60px;height:60px;border-radius:50%;margin:0 auto;
+  background:conic-gradient(#005187 0% 35%, #4d82bc 35% 60%, #84b6f4 60% 80%, rgba(132,182,244,0.2) 80% 100%)}
+.mock-list{display:flex;flex-direction:column;gap:7px}
+.mock-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 12px;background:rgba(0,81,135,0.15);border-radius:6px;
+  font-size:10px;color:rgba(255,255,255,0.7);
+}
+.mock-row-val{color:#84b6f4;font-weight:700}
+.mock-status{
+  width:7px;height:7px;border-radius:50%;margin-right:6px;display:inline-block;
+}
+.mock-status.g{background:#059669}.mock-status.y{background:#d97706}
+
+/* Sombra 3D embaixo */
+.mockup-shadow{
+  width:80%;height:20px;margin:0 auto;
+  background:radial-gradient(ellipse,rgba(0,81,135,0.4) 0%,transparent 70%);
+  filter:blur(20px);
+  animation:shadowPulse 6s ease-in-out infinite;
+}
+@keyframes shadowPulse{
+  0%,100%{transform:scaleX(1);opacity:.8}
+  50%{transform:scaleX(0.85);opacity:.5}
+}
+
+/* ===========================
+   STATS
+=========================== */
+#stats{
+  padding:80px 5%;
+  position:relative;
+}
+.stats-inner{
+  background:rgba(0,81,135,0.1);
+  border:1px solid rgba(132,182,244,0.15);
+  border-radius:20px;
+  padding:50px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:40px;
+  backdrop-filter:blur(20px);
+  position:relative;overflow:hidden;
+}
+.stats-inner::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(0,81,135,0.1) 0%,transparent 70%);
+}
+.stat-item{text-align:center;position:relative;z-index:1}
+.stat-num{
+  font-family:"Lora",serif;
+  font-size:clamp(36px,4vw,52px);
+  font-weight:700;
+  background:linear-gradient(135deg,#84b6f4,#fff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;margin-bottom:8px;
+}
+.stat-lbl{font-size:14px;color:rgba(255,255,255,0.5);font-weight:600}
+.stat-div{width:1px;background:rgba(132,182,244,0.15);align-self:stretch}
+
+/* ===========================
+   FEATURES
+=========================== */
+#features{padding:100px 5%;position:relative}
+.section-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 16px;border-radius:99px;
+  background:rgba(0,81,135,0.2);border:1px solid rgba(132,182,244,0.25);
+  font-size:11.5px;font-weight:700;color:#84b6f4;
+  letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px;
+}
+.section-title{
+  font-family:"Lora",serif;
+  font-size:clamp(28px,3.5vw,46px);
+  font-weight:700;color:#fff;
+  line-height:1.2;margin-bottom:16px;
+}
+.section-sub{
+  font-size:16px;color:rgba(255,255,255,0.55);
+  max-width:520px;line-height:1.7;margin-bottom:60px;
+}
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.feat-card{
+  padding:28px;border-radius:16px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(132,182,244,0.1);
+  position:relative;overflow:hidden;
+  transition:all .3s;
+  cursor:default;
+}
+.feat-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(0,81,135,0.15) 0%,transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.feat-card:hover{
+  border-color:rgba(132,182,244,0.3);
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.3),0 0 0 1px rgba(132,182,244,0.15);
+}
+.feat-card:hover::before{opacity:1}
+.feat-ico{
+  width:52px;height:52px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;
+  position:relative;z-index:1;
+}
+.feat-ico .material-icons-outlined{font-size:24px;color:#fff}
+.feat-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:10px;position:relative;z-index:1}
+.feat-desc{font-size:13.5px;color:rgba(255,255,255,0.5);line-height:1.7;position:relative;z-index:1}
+.feat-glow{
+  position:absolute;bottom:-20px;right:-20px;
+  width:100px;height:100px;border-radius:50%;
+  opacity:.15;filter:blur(30px);
+}
+
+/* ===========================
+   MODULES SHOWCASE
+=========================== */
+#modules{padding:100px 5%;background:rgba(0,81,135,0.05)}
+.modules-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:center;
+  margin-top:60px;
+}
+.modules-list{display:flex;flex-direction:column;gap:16px}
+.mod-item{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:20px 22px;border-radius:12px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(132,182,244,0.08);
+  cursor:pointer;transition:all .25s;
+}
+.mod-item.active,.mod-item:hover{
+  background:rgba(0,81,135,0.2);
+  border-color:rgba(132,182,244,0.3);
+}
+.mod-ico{
+  width:44px;height:44px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.mod-ico .material-icons-outlined{font-size:22px;color:#fff}
+.mod-info{}
+.mod-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.mod-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6}
+.modules-preview{
+  position:relative;
+}
+.modules-preview-card{
+  background:rgba(0,20,50,0.85);
+  border:1px solid rgba(132,182,244,0.2);
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 40px rgba(0,81,135,0.15);
+  backdrop-filter:blur(20px);
+  transform:perspective(800px) rotateY(8deg);
+  transition:transform .4s;
+  animation:cardFloat 7s ease-in-out infinite;
+}
+@keyframes cardFloat{
+  0%,100%{transform:perspective(800px) rotateY(8deg) translateY(0)}
+  50%{transform:perspective(800px) rotateY(8deg) translateY(-10px)}
+}
+.modules-preview-card:hover{transform:perspective(800px) rotateY(3deg)}
+.mp-header{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.mp-ico{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.mp-ico .material-icons-outlined{font-size:20px;color:#fff}
+.mp-title{font-size:16px;font-weight:700;color:#fff}
+.mp-sub{font-size:11.5px;color:#84b6f4;margin-top:2px}
+.mp-content{display:flex;flex-direction:column;gap:12px}
+.mp-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 16px;border-radius:8px;
+  background:rgba(0,81,135,0.15);border:1px solid rgba(132,182,244,0.08);
+}
+.mp-row-left{display:flex;align-items:center;gap:10px}
+.mp-avatar{
+  width:34px;height:34px;border-radius:50%;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:#fff;
+}
+.mp-name{font-size:13px;font-weight:600;color:#fff}
+.mp-time{font-size:11px;color:rgba(255,255,255,0.4)}
+.mp-badge{
+  padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;
+}
+.mp-badge.green{background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.3)}
+.mp-badge.blue{background:rgba(77,130,188,0.2);color:#84b6f4;border:1px solid rgba(77,130,188,0.3)}
+.mp-badge.yellow{background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.3)}
+.mp-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.mp-kpi{
+  text-align:center;padding:12px 8px;border-radius:8px;
+  background:rgba(0,81,135,0.2);border:1px solid rgba(132,182,244,0.1);
+}
+.mp-kpi-v{font-family:"Lora",serif;font-size:20px;font-weight:700;color:#84b6f4}
+.mp-kpi-l{font-size:9px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:rgba(132,182,244,0.5);margin-top:3px}
+
+/* Floating badges */
+.float-badge{
+  position:absolute;
+  background:rgba(0,20,50,0.9);
+  border:1px solid rgba(132,182,244,0.25);
+  border-radius:12px;padding:10px 16px;
+  display:flex;align-items:center;gap:9px;
+  backdrop-filter:blur(20px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  white-space:nowrap;
+}
+.float-badge .material-icons-outlined{font-size:18px}
+.float-badge-txt{font-size:12px;font-weight:700}
+.fb1{top:-20px;left:-40px;animation:badgeFloat1 5s ease-in-out infinite}
+.fb2{bottom:30px;left:-50px;animation:badgeFloat2 6s ease-in-out infinite}
+.fb3{top:50%;right:-30px;animation:badgeFloat1 7s ease-in-out infinite reverse}
+@keyframes badgeFloat1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes badgeFloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ===========================
+   HOW IT WORKS
+=========================== */
+#como{padding:100px 5%}
+.steps-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  margin-top:60px;position:relative;
+}
+.steps-grid::before{
+  content:'';position:absolute;top:30px;left:12.5%;right:12.5%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(132,182,244,0.3),rgba(132,182,244,0.3),transparent);
+  z-index:0;
+}
+.step{text-align:center;position:relative;z-index:1;padding:0 20px}
+.step-num{
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+  font-family:"Lora",serif;font-size:20px;font-weight:700;color:#fff;
+  box-shadow:0 8px 25px rgba(0,81,135,0.4);
+  position:relative;
+}
+.step-num::before{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  border:2px solid rgba(132,182,244,0.25);
+}
+.step-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:10px}
+.step-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7}
+
+/* ===========================
+   TESTIMONIALS
+=========================== */
+#depoimentos{padding:100px 5%;background:rgba(0,81,135,0.05);overflow:hidden}
+.test-scroll{
+  display:flex;gap:20px;margin-top:50px;
+  animation:scrollLeft 30s linear infinite;
+  width:max-content;
+}
+.test-scroll:hover{animation-play-state:paused}
+@keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.test-card{
+  width:340px;flex-shrink:0;
+  padding:28px;border-radius:16px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(132,182,244,0.12);
+  backdrop-filter:blur(10px);
+}
+.test-stars{display:flex;gap:3px;margin-bottom:16px}
+.test-star{color:#f59e0b;font-size:16px}
+.test-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:20px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,#005187,#4d82bc);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.test-name{font-size:14px;font-weight:700;color:#fff}
+.test-clinic{font-size:12px;color:#84b6f4}
+
+/* ===========================
+   CTA
+=========================== */
+#cta{padding:100px 5%}
+.cta-box{
+  border-radius:28px;padding:80px 60px;
+  text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(0,81,135,0.4),rgba(77,130,188,0.2));
+  border:1px solid rgba(132,182,244,0.2);
+  backdrop-filter:blur(20px);
+}
+.cta-box::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  top:-200px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(0,81,135,0.3) 0%,transparent 70%);
+}
+.cta-box::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 80%,rgba(5,150,105,0.08) 0%,transparent 50%),
+    radial-gradient(circle at 80% 20%,rgba(132,182,244,0.06) 0%,transparent 50%);
+}
+.cta-tag{position:relative;z-index:1}
+.cta-title{
+  font-family:"Lora",serif;
+  font-size:clamp(28px,4vw,52px);
+  font-weight:700;color:#fff;
+  margin:16px 0;position:relative;z-index:1;
+}
+.cta-sub{
+  font-size:16px;color:rgba(255,255,255,0.6);
+  max-width:500px;margin:0 auto 40px;line-height:1.7;
+  position:relative;z-index:1;
+}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.cta-info{
+  margin-top:28px;font-size:12.5px;color:rgba(255,255,255,0.35);
+  position:relative;z-index:1;
+}
+.cta-info a{color:#84b6f4;text-decoration:none}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer{
+  padding:60px 5% 30px;
+  border-top:1px solid rgba(132,182,244,0.1);
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:50px;margin-bottom:50px;
+}
+.footer-brand .nav-logo{margin-bottom:14px}
+.footer-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;max-width:260px}
+.footer-col-title{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13.5px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#84b6f4}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:24px;border-top:1px solid rgba(132,182,244,0.08);
+  font-size:12.5px;color:rgba(255,255,255,0.25);flex-wrap:wrap;gap:12px;
+}
+.footer-bottom a{color:rgba(132,182,244,0.5);text-decoration:none}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:rgba(0,0,0,0.2)}
+::-webkit-scrollbar-thumb{background:rgba(0,81,135,0.5);border-radius:5px}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media(max-width:1024px){
+  #hero{grid-template-columns:1fr;text-align:center;padding-top:100px}
+  .hero-sub{max-width:100%;margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-trust{justify-content:center}
+  .hero-right{display:none}
+  .stats-inner{grid-template-columns:1fr 1fr;gap:30px}
+  .features-grid{grid-template-columns:1fr 1fr}
+  .modules-wrap{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .steps-grid::before{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  nav{padding:14px 5%}
+  .nav-links,.nav-cta{display:none}
+  .stats-inner{grid-template-columns:1fr;padding:30px}
+  .features-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .cta-box{padding:50px 24px}
+}
+
+/* Floating particles */
+.particle{
+  position:absolute;width:4px;height:4px;border-radius:50%;
+  background:rgba(132,182,244,0.4);pointer-events:none;
+  animation:particleFloat linear infinite;
+}
+@keyframes particleFloat{
+  0%{transform:translateY(100vh) translateX(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translateY(-100px) translateX(var(--drift));opacity:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-ico"><span class="material-icons-outlined">spa</span></div>
+    <div>
+      <div class="nav-logo-txt">Burgarelli Systems</div>
+      <div class="nav-logo-sub">Clínica Estética</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">Funcionalidades</a></li>
+    <li><a href="#modules">Módulos</a></li>
+    <li><a href="#como">Como funciona</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta"><span class="material-icons-outlined">rocket_launch</span>Solicitar Demo</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-mesh"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div id="particles-container"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Software #1 para Clínicas de Estética
+    </div>
+    <h1 class="hero-title">
+      Gerencie sua clínica com<br>
+      <span>inteligência e elegância</span>
+    </h1>
+    <p class="hero-sub">
+      Agendamentos, financeiro, estoque, clientes e muito mais — tudo em uma plataforma completa, moderna e pensada para clínicas de estética que querem crescer.
+    </p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-primary">
+        <span class="material-icons-outlined">play_circle</span>
+        Começar agora
+      </a>
+      <a href="#features" class="btn-secondary">
+        <span class="material-icons-outlined">visibility</span>
+        Ver funcionalidades
+      </a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-dots">
+        <div class="hero-trust-dot">A</div>
+        <div class="hero-trust-dot">B</div>
+        <div class="hero-trust-dot">C</div>
+        <div class="hero-trust-dot">D</div>
+      </div>
+      <span>Mais de <strong style="color:#fff">200+ clínicas</strong> já confiam no sistema</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="mockup-scene">
+      <div class="mockup-wrap">
+        <div class="mockup">
+          <div class="mockup-bar">
+            <div class="mockup-dot r"></div>
+            <div class="mockup-dot y"></div>
+            <div class="mockup-dot g"></div>
+            <div class="mockup-title-bar">Dashboard — Clínica Estética</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mock-kpi-row">
+              <div class="mock-kpi"><div class="mock-kpi-val">R$18k</div><div class="mock-kpi-lbl">Receita</div></div>
+              <div class="mock-kpi"><div class="mock-kpi-val">147</div><div class="mock-kpi-lbl">Agendamentos</div></div>
+              <div class="mock-kpi"><div class="mock-kpi-val">98%</div><div class="mock-kpi-lbl">Satisfação</div></div>
+              <div class="mock-kpi"><div class="mock-kpi-val">23</div><div class="mock-kpi-lbl">Clientes Novos</div></div>
+            </div>
+            <div class="mock-chart-row">
+              <div class="mock-chart">
+                <div class="mock-chart-title">Receita — Mai</div>
+                <div class="mock-bars">
+                  <div class="mock-bar" style="height:30%"></div>
+                  <div class="mock-bar" style="height:55%"></div>
+                  <div class="mock-bar" style="height:40%"></div>
+                  <div class="mock-bar" style="height:70%"></div>
+                  <div class="mock-bar" style="height:60%"></div>
+                  <div class="mock-bar" style="height:85%"></div>
+                  <div class="mock-bar" style="height:75%"></div>
+                </div>
+              </div>
+              <div class="mock-chart">
+                <div class="mock-chart-title">Serviços</div>
+                <div class="mock-pie"></div>
+              </div>
+            </div>
+            <div class="mock-list">
+              <div class="mock-row">
+                <span><span class="mock-status g"></span>Ana Paula — Botox</span>
+                <span class="mock-row-val">14:00</span>
+              </div>
+              <div class="mock-row">
+                <span><span class="mock-status y"></span>Carla Melo — Limpeza</span>
+                <span class="mock-row-val">15:30</span>
+              </div>
+              <div class="mock-row">
+                <span><span class="mock-status g"></span>Júlia — Preenchimento</span>
+                <span class="mock-row-val">16:15</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-shadow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num" id="stat1">200+</div>
+      <div class="stat-lbl">Clínicas atendidas</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <div class="stat-num" id="stat2">50k+</div>
+      <div class="stat-lbl">Agendamentos gerenciados</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <div class="stat-num" id="stat3">R$2M+</div>
+      <div class="stat-lbl">Em receita controlada</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <div class="stat-num" id="stat4">99,9%</div>
+      <div class="stat-lbl">Uptime garantido</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+  <div class="section-tag"><span class="material-icons-outlined" style="font-size:14px">auto_awesome</span>Funcionalidades</div>
+  <h2 class="section-title">Tudo que sua clínica precisa,<br>em um só lugar</h2>
+  <p class="section-sub">Do agendamento ao financeiro, da gestão de clientes ao controle de estoque — uma plataforma completa e intuitiva.</p>
+
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#005187,#4d82bc)">
+        <span class="material-icons-outlined">calendar_month</span>
+      </div>
+      <div class="feat-glow" style="background:#005187"></div>
+      <div class="feat-title">Agenda Inteligente</div>
+      <div class="feat-desc">Agendamentos por profissional, controle de horários, lembretes automáticos e visualização em grade semanal. Elimine conflitos e faltas.</div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#059669,#34d399)">
+        <span class="material-icons-outlined">payments</span>
+      </div>
+      <div class="feat-glow" style="background:#059669"></div>
+      <div class="feat-title">Financeiro Completo</div>
+      <div class="feat-desc">Receitas, despesas, fluxo de caixa, taxas de operadora, parcelas e relatórios detalhados. Tenha controle total das finanças.</div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">
+        <span class="material-icons-outlined">people</span>
+      </div>
+      <div class="feat-glow" style="background:#7c3aed"></div>
+      <div class="feat-title">Gestão de Clientes</div>
+      <div class="feat-desc">Cadastro completo, histórico de procedimentos, aniversários, preferências e segmentação para campanhas de marketing.</div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#d97706,#fbbf24)">
+        <span class="material-icons-outlined">inventory_2</span>
+      </div>
+      <div class="feat-glow" style="background:#d97706"></div>
+      <div class="feat-title">Controle de Estoque</div>
+      <div class="feat-desc">Produtos com preço de custo e venda, alertas de estoque baixo, notas fiscais de compra e histórico de movimentações.</div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#dc2626,#f87171)">
+        <span class="material-icons-outlined">shopping_bag</span>
+      </div>
+      <div class="feat-glow" style="background:#dc2626"></div>
+      <div class="feat-title">Ponto de Vendas</div>
+      <div class="feat-desc">Venda produtos e procedimentos com parcelamento, taxas automáticas por operadora, recibo e nota fiscal em um clique.</div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#0891b2,#22d3ee)">
+        <span class="material-icons-outlined">bar_chart</span>
+      </div>
+      <div class="feat-glow" style="background:#0891b2"></div>
+      <div class="feat-title">Relatórios & BI</div>
+      <div class="feat-desc">Dashboards visuais, KPIs em tempo real, relatórios por período, procedimento e profissional. Tome decisões com dados.</div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#be185d,#f472b6)">
+        <span class="material-icons-outlined">badge</span>
+      </div>
+      <div class="feat-glow" style="background:#be185d"></div>
+      <div class="feat-title">Gestão de Profissionais</div>
+      <div class="feat-desc">Cadastro de equipe, comissões, agenda individual, controle de permissões por cargo e acompanhamento de performance.</div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#065f46,#34d399)">
+        <span class="material-icons-outlined">description</span>
+      </div>
+      <div class="feat-glow" style="background:#065f46"></div>
+      <div class="feat-title">Contratos Digitais</div>
+      <div class="feat-desc">Crie e gerencie contratos de serviço, termos de consentimento e documentos com assinatura eletrônica integrada.</div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-ico" style="background:linear-gradient(135deg,#1d4ed8,#60a5fa)">
+        <span class="material-icons-outlined">campaign</span>
+      </div>
+      <div class="feat-glow" style="background:#1d4ed8"></div>
+      <div class="feat-title">Marketing Integrado</div>
+      <div class="feat-desc">Campanhas via WhatsApp, segmentação de clientes, disparos automáticos de aniversário, retorno e promoções.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULES ===== -->
+<section id="modules">
+  <div class="section-tag"><span class="material-icons-outlined" style="font-size:14px">view_module</span>Módulos</div>
+  <h2 class="section-title">Cada área do seu negócio<br>totalmente integrada</h2>
+
+  <div class="modules-wrap">
+    <div class="modules-list">
+      <div class="mod-item active" onclick="setMod(this,0)">
+        <div class="mod-ico" style="background:linear-gradient(135deg,#005187,#4d82bc)">
+          <span class="material-icons-outlined">calendar_month</span>
+        </div>
+        <div class="mod-info">
+          <div class="mod-title">Agendamentos</div>
+          <div class="mod-desc">Grade semanal por profissional, bloqueios, confirmações e reagendamentos automáticos.</div>
+        </div>
+      </div>
+      <div class="mod-item" onclick="setMod(this,1)">
+        <div class="mod-ico" style="background:linear-gradient(135deg,#059669,#34d399)">
+          <span class="material-icons-outlined">payments</span>
+        </div>
+        <div class="mod-info">
+          <div class="mod-title">Financeiro</div>
+          <div class="mod-desc">Lançamentos, DRE simplificado, relatórios e controle de taxas por forma de pagamento.</div>
+        </div>
+      </div>
+      <div class="mod-item" onclick="setMod(this,2)">
+        <div class="mod-ico" style="background:linear-gradient(135deg,#d97706,#fbbf24)">
+          <span class="material-icons-outlined">inventory_2</span>
+        </div>
+        <div class="mod-info">
+          <div class="mod-title">Estoque & Vendas</div>
+          <div class="mod-desc">Produtos, preços, movimentações, ponto de venda com parcelamento e emissão de NF.</div>
+        </div>
+      </div>
+      <div class="mod-item" onclick="setMod(this,3)">
+        <div class="mod-ico" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">
+          <span class="material-icons-outlined">people</span>
+        </div>
+        <div class="mod-info">
+          <div class="mod-title">Clientes & CRM</div>
+          <div class="mod-desc">Ficha completa, histórico, preferências, contratos e segmentação para marketing.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modules-preview" style="padding:40px 20px">
+      <div class="float-badge fb1" style="color:#84b6f4">
+        <span class="material-icons-outlined" style="color:#059669">check_circle</span>
+        <span class="float-badge-txt" style="color:#fff">Agendamento confirmado</span>
+      </div>
+      <div class="float-badge fb2" style="color:#84b6f4">
+        <span class="material-icons-outlined" style="color:#f59e0b">star</span>
+        <span class="float-badge-txt" style="color:#fff">Avaliação 5 estrelas</span>
+      </div>
+      <div class="float-badge fb3">
+        <span class="material-icons-outlined" style="color:#059669">trending_up</span>
+        <span class="float-badge-txt" style="color:#059669">+32% receita</span>
+      </div>
+
+      <div class="modules-preview-card" id="mod-card">
+        <div class="mp-header">
+          <div class="mp-ico" style="background:linear-gradient(135deg,#005187,#4d82bc)">
+            <span class="material-icons-outlined">calendar_month</span>
+          </div>
+          <div>
+            <div class="mp-title">Agenda do Dia</div>
+            <div class="mp-sub">Terça-feira, 10 de Maio</div>
+          </div>
+        </div>
+        <div class="mp-content" id="mod-content">
+          <div class="mp-row">
+            <div class="mp-row-left">
+              <div class="mp-avatar">AP</div>
+              <div><div class="mp-name">Ana Paula Santos</div><div class="mp-time">Botox Facial • Dr. Carla</div></div>
+            </div>
+            <span class="mp-badge green">14:00</span>
+          </div>
+          <div class="mp-row">
+            <div class="mp-row-left">
+              <div class="mp-avatar">CM</div>
+              <div><div class="mp-name">Carla Mendes</div><div class="mp-time">Limpeza de Pele • Dr. Pedro</div></div>
+            </div>
+            <span class="mp-badge blue">15:30</span>
+          </div>
+          <div class="mp-row">
+            <div class="mp-row-left">
+              <div class="mp-avatar">JR</div>
+              <div><div class="mp-name">Júlia Rodrigues</div><div class="mp-time">Preenchimento • Dr. Carla</div></div>
+            </div>
+            <span class="mp-badge yellow">16:15</span>
+          </div>
+          <div class="mp-kpis">
+            <div class="mp-kpi"><div class="mp-kpi-v">12</div><div class="mp-kpi-l">Hoje</div></div>
+            <div class="mp-kpi"><div class="mp-kpi-v">3</div><div class="mp-kpi-l">Pendentes</div></div>
+            <div class="mp-kpi"><div class="mp-kpi-v">R$2.4k</div><div class="mp-kpi-l">Receita</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="como">
+  <div class="section-tag"><span class="material-icons-outlined" style="font-size:14px">route</span>Como funciona</div>
+  <h2 class="section-title">Configure em minutos,<br>use por anos</h2>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Crie sua conta</div>
+      <div class="step-desc">Cadastro simples, sem burocracia. Sua clínica estará no ar em menos de 5 minutos.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Configure o sistema</div>
+      <div class="step-desc">Adicione profissionais, procedimentos, produtos e configure as permissões de cada usuário.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Importe seus dados</div>
+      <div class="step-desc">Traga sua base de clientes e histórico. Nossa equipe auxilia na migração sem perder nada.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">Escale com segurança</div>
+      <div class="step-desc">Múltiplas unidades, equipes e relatórios consolidados. Cresça sem limites com a plataforma.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="depoimentos">
+  <div class="section-tag"><span class="material-icons-outlined" style="font-size:14px">favorite</span>Depoimentos</div>
+  <h2 class="section-title">O que nossas clínicas dizem</h2>
+
+  <div style="overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)">
+    <div class="test-scroll">
+      <!-- Depoimento 1 -->
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Revolucionou nossa clínica. Antes perdíamos agendamentos por falta de controle, hoje temos tudo automatizado e nossa receita cresceu 40% em 3 meses."</p>
+        <div class="test-author">
+          <div class="test-avatar">MF</div>
+          <div><div class="test-name">Marina Ferreira</div><div class="test-clinic">Clínica Bella Vita — SP</div></div>
+        </div>
+      </div>
+      <!-- Depoimento 2 -->
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"O controle financeiro me poupou horas de planilha toda semana. Agora vejo em tempo real quanto entrei, quanto gastei e qual o lucro líquido."</p>
+        <div class="test-author">
+          <div class="test-avatar">RC</div>
+          <div><div class="test-name">Roberta Costa</div><div class="test-clinic">Studio Glow — BH</div></div>
+        </div>
+      </div>
+      <!-- Depoimento 3 -->
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"A gestão de estoque evitou que eu ficasse sem produtos em dia de atendimento. Os alertas automáticos são um salva-vidas para o nosso fluxo."</p>
+        <div class="test-author">
+          <div class="test-avatar">TS</div>
+          <div><div class="test-name">Tatiane Souza</div><div class="test-clinic">Espaço Dermia — RJ</div></div>
+        </div>
+      </div>
+      <!-- Depoimento 4 -->
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Minha equipe adorou. Cada profissional acessa só o que precisa, vejo a agenda de todos em uma tela e o suporte é excelente. Muito satisfeita!"</p>
+        <div class="test-author">
+          <div class="test-avatar">CP</div>
+          <div><div class="test-name">Camila Pires</div><div class="test-clinic">Lumina Estética — Curitiba</div></div>
+        </div>
+      </div>
+      <!-- Depoimento 5 -->
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"O módulo de contratos e consentimentos foi essencial. Documentação digital, segura e sempre acessível. Economizo papel e tempo todo dia."</p>
+        <div class="test-author">
+          <div class="test-avatar">AL</div>
+          <div><div class="test-name">Amanda Lima</div><div class="test-clinic">Clínica Renova — Fortaleza</div></div>
+        </div>
+      </div>
+      <!-- Depoimento 6 -->
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Os relatórios me mostraram quais procedimentos eram mais lucrativos. Ajustei meu mix de serviços e aumentei a margem em 25% sem atender mais clientes."</p>
+        <div class="test-author">
+          <div class="test-avatar">VN</div>
+          <div><div class="test-name">Vanessa Nunes</div><div class="test-clinic">Beauty Med — Porto Alegre</div></div>
+        </div>
+      </div>
+      <!-- Duplicadas para loop contínuo -->
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Revolucionou nossa clínica. Antes perdíamos agendamentos por falta de controle, hoje temos tudo automatizado e nossa receita cresceu 40% em 3 meses."</p>
+        <div class="test-author">
+          <div class="test-avatar">MF</div>
+          <div><div class="test-name">Marina Ferreira</div><div class="test-clinic">Clínica Bella Vita — SP</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"O controle financeiro me poupou horas de planilha toda semana. Agora vejo em tempo real quanto entrei, quanto gastei e qual o lucro líquido."</p>
+        <div class="test-author">
+          <div class="test-avatar">RC</div>
+          <div><div class="test-name">Roberta Costa</div><div class="test-clinic">Studio Glow — BH</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"A gestão de estoque evitou que eu ficasse sem produtos em dia de atendimento. Os alertas automáticos são um salva-vidas para o nosso fluxo."</p>
+        <div class="test-author">
+          <div class="test-avatar">TS</div>
+          <div><div class="test-name">Tatiane Souza</div><div class="test-clinic">Espaço Dermia — RJ</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Minha equipe adorou. Cada profissional acessa só o que precisa, vejo a agenda de todos em uma tela e o suporte é excelente. Muito satisfeita!"</p>
+        <div class="test-author">
+          <div class="test-avatar">CP</div>
+          <div><div class="test-name">Camila Pires</div><div class="test-clinic">Lumina Estética — Curitiba</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Os relatórios me mostraram quais procedimentos eram mais lucrativos. Ajustei meu mix de serviços e aumentei a margem em 25% sem atender mais clientes."</p>
+        <div class="test-author">
+          <div class="test-avatar">VN</div>
+          <div><div class="test-name">Vanessa Nunes</div><div class="test-clinic">Beauty Med — Porto Alegre</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta">
+  <div class="cta-box">
+    <div class="section-tag cta-tag"><span class="material-icons-outlined" style="font-size:14px">rocket_launch</span>Comece hoje</div>
+    <h2 class="cta-title">Pronta para transformar<br>sua clínica?</h2>
+    <p class="cta-sub">Solicite uma demonstração gratuita e veja como o Burgarelli Systems pode multiplicar os resultados da sua clínica de estética.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20conhecer%20o%20Burgarelli%20Systems" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#059669,#34d399);box-shadow:0 8px 30px rgba(5,150,105,0.4)">
+        <span class="material-icons-outlined">chat</span>
+        Falar no WhatsApp
+      </a>
+      <a href="mailto:contato@burgarellisystems.com.br" class="btn-secondary">
+        <span class="material-icons-outlined">mail</span>
+        Enviar e-mail
+      </a>
+    </div>
+    <p class="cta-info">Sem fidelidade • Suporte incluso • Dados 100% seguros</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:14px">
+        <div class="nav-logo-ico"><span class="material-icons-outlined">spa</span></div>
+        <div>
+          <div class="nav-logo-txt">Burgarelli Systems</div>
+          <div class="nav-logo-sub">Clínica Estética</div>
+        </div>
+      </div>
+      <p class="footer-desc">Software completo para gestão de clínicas de estética. Simples, poderoso e feito para quem quer crescer com inteligência.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Produto</div>
+      <div class="footer-links">
+        <a href="#features">Funcionalidades</a>
+        <a href="#modules">Módulos</a>
+        <a href="#como">Como funciona</a>
+        <a href="#depoimentos">Depoimentos</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Sistema</div>
+      <div class="footer-links">
+        <a href="index.html">Acessar Sistema</a>
+        <a href="#">Central de Ajuda</a>
+        <a href="#">Suporte</a>
+        <a href="#">Atualizações</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contato</div>
+      <div class="footer-links">
+        <a href="#">WhatsApp</a>
+        <a href="#">E-mail</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Burgarelli Systems. Todos os direitos reservados.</span>
+    <span>Feito com <span style="color:#dc2626">♥</span> para clínicas de estética</span>
+  </div>
+</footer>
+
+<script>
+// ===== NAVBAR SCROLL =====
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(0,13,26,0.92)';
+    nav.style.borderBottomColor = 'rgba(132,182,244,0.18)';
+  } else {
+    nav.style.background = 'rgba(0,13,26,0.7)';
+    nav.style.borderBottomColor = 'rgba(132,182,244,0.12)';
+  }
+});
+
+// ===== PARTICLES =====
+(function() {
+  var container = document.getElementById('particles-container');
+  if (!container) return;
+  container.style.cssText = 'position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden';
+  for (var i = 0; i < 25; i++) {
+    var p = document.createElement('div');
+    p.className = 'particle';
+    var x = Math.random() * 100;
+    var dur = 8 + Math.random() * 12;
+    var delay = Math.random() * 10;
+    var size = 2 + Math.random() * 3;
+    var drift = (Math.random() - 0.5) * 200;
+    p.style.cssText =
+      'left:' + x + '%;' +
+      'width:' + size + 'px;height:' + size + 'px;' +
+      'animation-duration:' + dur + 's;' +
+      'animation-delay:-' + delay + 's;' +
+      '--drift:' + drift + 'px;' +
+      'opacity:' + (0.2 + Math.random() * 0.4);
+    container.appendChild(p);
+  }
+})();
+
+// ===== MODULES TABS =====
+var modData = [
+  {
+    ico: 'calendar_month',
+    grad: 'linear-gradient(135deg,#005187,#4d82bc)',
+    title: 'Agenda do Dia',
+    sub: 'Terça-feira, 10 de Maio',
+    rows: [
+      { ini: 'AP', nome: 'Ana Paula Santos', proc: 'Botox Facial • Dr. Carla', badge: '14:00', cls: 'green' },
+      { ini: 'CM', nome: 'Carla Mendes', proc: 'Limpeza de Pele • Dr. Pedro', badge: '15:30', cls: 'blue' },
+      { ini: 'JR', nome: 'Júlia Rodrigues', proc: 'Preenchimento • Dr. Carla', badge: '16:15', cls: 'yellow' }
+    ],
+    kpis: [{ v: '12', l: 'Hoje' }, { v: '3', l: 'Pendentes' }, { v: 'R$2.4k', l: 'Receita' }]
+  },
+  {
+    ico: 'payments',
+    grad: 'linear-gradient(135deg,#059669,#34d399)',
+    title: 'Financeiro — Maio',
+    sub: 'Receitas & Despesas',
+    rows: [
+      { ini: '↑', nome: 'Atendimentos', proc: 'Receita do mês', badge: 'R$18.400', cls: 'green' },
+      { ini: '↓', nome: 'Fornecedores', proc: 'Despesa fixa', badge: 'R$3.200', cls: 'yellow' },
+      { ini: '↑', nome: 'Produtos Vendidos', proc: 'PDV', badge: 'R$4.800', cls: 'green' }
+    ],
+    kpis: [{ v: 'R$20k', l: 'Receita' }, { v: 'R$6k', l: 'Despesas' }, { v: 'R$14k', l: 'Lucro' }]
+  },
+  {
+    ico: 'inventory_2',
+    grad: 'linear-gradient(135deg,#d97706,#fbbf24)',
+    title: 'Estoque & Vendas',
+    sub: 'Controle de produtos',
+    rows: [
+      { ini: 'BT', nome: 'Botox 100U', proc: 'Estoque: 8 unidades', badge: 'OK', cls: 'green' },
+      { ini: 'AC', nome: 'Ácido Hialurônico', proc: 'Estoque: 2 unidades', badge: 'Baixo', cls: 'yellow' },
+      { ini: 'VT', nome: 'Vitamina C 20%', proc: 'Estoque: 15 frascos', badge: 'OK', cls: 'green' }
+    ],
+    kpis: [{ v: '48', l: 'Produtos' }, { v: '3', l: 'Alerta' }, { v: 'R$8.9k', l: 'Valor' }]
+  },
+  {
+    ico: 'people',
+    grad: 'linear-gradient(135deg,#7c3aed,#a78bfa)',
+    title: 'CRM — Clientes',
+    sub: 'Base de clientes ativa',
+    rows: [
+      { ini: 'AP', nome: 'Ana Paula Santos', proc: 'Última visita: 3/05 • 12 atendimentos', badge: 'VIP', cls: 'green' },
+      { ini: 'LS', nome: 'Letícia Silveira', proc: 'Última visita: 28/04 • 5 atendimentos', badge: 'Ativa', cls: 'blue' },
+      { ini: 'MO', nome: 'Mariana Oliveira', proc: 'Aniversário: 12/05 • Enviar parabéns', badge: '🎂', cls: 'yellow' }
+    ],
+    kpis: [{ v: '312', l: 'Clientes' }, { v: '47', l: 'Novos' }, { v: '94%', l: 'Retorno' }]
+  }
+];
+
+function setMod(el, idx) {
+  document.querySelectorAll('.mod-item').forEach(function(m) { m.classList.remove('active'); });
+  el.classList.add('active');
+  var d = modData[idx];
+  var card = document.getElementById('mod-card');
+  var content = document.getElementById('mod-content');
+  card.style.opacity = '0';
+  card.style.transform = 'perspective(800px) rotateY(8deg) translateY(10px)';
+  setTimeout(function() {
+    card.querySelector('.mp-ico').style.background = d.grad;
+    card.querySelector('.mp-ico .material-icons-outlined').textContent = d.ico;
+    card.querySelector('.mp-title').textContent = d.title;
+    card.querySelector('.mp-sub').textContent = d.sub;
+    content.innerHTML =
+      d.rows.map(function(r) {
+        return '<div class="mp-row"><div class="mp-row-left"><div class="mp-avatar">' + r.ini + '</div>' +
+          '<div><div class="mp-name">' + r.nome + '</div><div class="mp-time">' + r.proc + '</div></div></div>' +
+          '<span class="mp-badge ' + r.cls + '">' + r.badge + '</span></div>';
+      }).join('') +
+      '<div class="mp-kpis">' +
+      d.kpis.map(function(k) {
+        return '<div class="mp-kpi"><div class="mp-kpi-v">' + k.v + '</div><div class="mp-kpi-l">' + k.l + '</div></div>';
+      }).join('') +
+      '</div>';
+    card.style.opacity = '1';
+    card.style.transform = 'perspective(800px) rotateY(8deg) translateY(0)';
+  }, 200);
+}
+var modCard = document.getElementById('mod-card');
+if (modCard) { modCard.style.transition = 'all .3s ease'; }
+
+// ===== COUNTER ANIMATION =====
+function animCount(id, target, prefix, suffix) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var start = 0;
+  var duration = 2000;
+  var step = duration / 60;
+  var timer = setInterval(function() {
+    start += target / (duration / step);
+    if (start >= target) { start = target; clearInterval(timer); }
+    el.textContent = prefix + Math.round(start) + suffix;
+  }, step);
+}
+var countersStarted = false;
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting && !countersStarted) {
+      countersStarted = true;
+      // Just let the numbers display as-is since they have K/M suffixes
+    }
+  });
+}, { threshold: 0.5 });
+var statsSection = document.getElementById('stats');
+if (statsSection) observer.observe(statsSection);
+
+// ===== SCROLL REVEAL =====
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.feat-card,.step,.mod-item').forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  revealObs.observe(el);
+});
+
+// Stagger feat cards
+document.querySelectorAll('.feat-card').forEach(function(el, i) {
+  el.style.transitionDelay = (i * 60) + 'ms';
+});
+</script>
+</body>
+</html>
