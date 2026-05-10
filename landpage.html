@@ -364,6 +364,21 @@ nav{
 /* Screens */
 .sys-scr{display:none;background:#c4dafa;padding:16px;max-height:540px;overflow:hidden;font-family:"Plus Jakarta Sans",sans-serif}
 .sys-scr.active{display:block}
+/* Floating 3D module mockup */
+.mod-scn{perspective:1400px;width:100%;max-width:700px;margin:0 auto}
+.mod-mkp-wrap{
+  transform:rotateY(-10deg) rotateX(6deg);
+  transform-style:preserve-3d;
+  transition:transform .5s ease;
+  animation:modFloat 7s ease-in-out infinite;
+}
+.mod-mkp-wrap:hover{transform:rotateY(-3deg) rotateX(2deg)}
+@keyframes modFloat{
+  0%,100%{transform:rotateY(-10deg) rotateX(6deg) translateY(0)}
+  50%{transform:rotateY(-10deg) rotateX(6deg) translateY(-10px)}
+}
+.mod-body{display:none;padding:18px;flex-direction:column;gap:12px}
+.mod-body.active{display:flex}
 /* Page header */
 .sp-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
 .sp-title{font-family:"Lora",serif;font-size:22px;font-weight:700;color:#002a47}
@@ -698,20 +713,6 @@ footer{
                 <div class="mock-pie"></div>
               </div>
             </div>
-            <div class="mock-list">
-              <div class="mock-row">
-                <span><span class="mock-status g"></span>Ana Paula — Botox</span>
-                <span class="mock-row-val">14:00</span>
-              </div>
-              <div class="mock-row">
-                <span><span class="mock-status y"></span>Carla Melo — Limpeza</span>
-                <span class="mock-row-val">15:30</span>
-              </div>
-              <div class="mock-row">
-                <span><span class="mock-status g"></span>Júlia — Preenchimento</span>
-                <span class="mock-row-val">16:15</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -858,400 +859,184 @@ footer{
     </button>
   </div>
 
-  <div class="sys-browser">
-    <div class="sys-chrome">
-      <div class="sys-dots">
-        <span style="background:#ff5f57"></span>
-        <span style="background:#febc2e"></span>
-        <span style="background:#28c840"></span>
-      </div>
-      <div class="sys-url-bar">app.clinicagest.com.br/agenda</div>
-      <div style="width:80px"></div>
-    </div>
-    <div class="sys-body">
+  <div class="mod-scn">
+    <div class="mod-mkp-wrap">
+      <div class="mockup">
+        <div class="mockup-bar">
+          <div class="mockup-dot r"></div>
+          <div class="mockup-dot y"></div>
+          <div class="mockup-dot g"></div>
+          <div class="mockup-title-bar" id="mod-title-bar">Agendamentos — Clínica Estética</div>
+        </div>
 
-      <!-- SCREEN 0: AGENDA -->
-      <div class="sys-scr active" id="scr-0">
-        <div class="sp-hdr">
-          <div>
-            <div class="sp-title"><span class="material-icons-outlined" style="font-size:18px;vertical-align:middle;margin-right:5px;color:#4d82bc">calendar_month</span>Agendamentos</div>
-            <div class="sp-sub">Terça-feira, 10 de Maio de 2025</div>
+        <!-- Screen 0: Agenda -->
+        <div class="mod-body active" id="mscr-0">
+          <div class="mock-kpi-row">
+            <div class="mock-kpi"><div class="mock-kpi-val">14</div><div class="mock-kpi-lbl">Hoje</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">9</div><div class="mock-kpi-lbl">Confirmados</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">R$3,8k</div><div class="mock-kpi-lbl">Receita</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">3</div><div class="mock-kpi-lbl">Pendentes</div></div>
           </div>
-          <div style="display:flex;gap:7px">
-            <button class="sp-btn sp-btn-sec"><span class="material-icons-outlined">filter_list</span>Filtros</button>
-            <button class="sp-btn sp-btn-pri"><span class="material-icons-outlined">add</span>Novo Agendamento</button>
-          </div>
-        </div>
-        <div class="sp-kpis" style="grid-template-columns:repeat(4,1fr)">
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#005187,#4d82bc)"><span class="material-icons-outlined">event</span></div>
-            <div><div class="sp-kpi-val">14</div><div class="sp-kpi-lbl">Hoje</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="material-icons-outlined">check_circle</span></div>
-            <div><div class="sp-kpi-val">9</div><div class="sp-kpi-lbl">Confirmados</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#d97706,#fbbf24)"><span class="material-icons-outlined">schedule</span></div>
-            <div><div class="sp-kpi-val">3</div><div class="sp-kpi-lbl">Pendentes</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><span class="material-icons-outlined">attach_money</span></div>
-            <div><div class="sp-kpi-val">R$3,8k</div><div class="sp-kpi-lbl">Receita</div></div>
-          </div>
-        </div>
-        <div class="sp-toolbar">
-          <span class="sp-fbtn on">Todos</span>
-          <span class="sp-fbtn">Dra. Ana</span>
-          <span class="sp-fbtn">Dr. Pedro</span>
-          <span class="sp-fbtn">Dra. Camila</span>
-          <div style="flex:1"></div>
-          <span class="sp-fbtn"><span class="material-icons-outlined" style="font-size:11px;vertical-align:middle">search</span></span>
-        </div>
-        <div class="sp-table-wrap">
-          <table class="sp-table">
-            <thead>
-              <tr><th>HORA</th><th>PACIENTE</th><th>PROCEDIMENTO</th><th>PROFISSIONAL</th><th>STATUS</th><th></th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>09:00</strong></td>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#005187,#84b6f4);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">AP</div>Ana Paula S.</div></td>
-                <td>Botox Facial</td><td>Dra. Camila</td>
-                <td><span class="sp-badge green">Confirmado</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">more_vert</span></button></td>
-              </tr>
-              <tr>
-                <td><strong>10:30</strong></td>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">RM</div>Rafael Melo</div></td>
-                <td>Limpeza de Pele</td><td>Dr. Pedro</td>
-                <td><span class="sp-badge blue">Aguardando</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">more_vert</span></button></td>
-              </tr>
-              <tr>
-                <td><strong>11:15</strong></td>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#059669,#34d399);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">JL</div>Juliana Lopes</div></td>
-                <td>Preenchimento Labial</td><td>Dra. Ana</td>
-                <td><span class="sp-badge yellow">Pendente</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">more_vert</span></button></td>
-              </tr>
-              <tr>
-                <td><strong>14:00</strong></td>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#d97706,#fbbf24);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">BC</div>Beatriz Costa</div></td>
-                <td>Skinbooster</td><td>Dra. Camila</td>
-                <td><span class="sp-badge green">Confirmado</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">more_vert</span></button></td>
-              </tr>
-              <tr>
-                <td><strong>15:30</strong></td>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#be185d,#f472b6);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">FS</div>Fernanda Souza</div></td>
-                <td>Micropigmentação</td><td>Dra. Ana</td>
-                <td><span class="sp-badge green">Confirmado</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">more_vert</span></button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- SCREEN 1: FINANCEIRO -->
-      <div class="sys-scr" id="scr-1">
-        <div class="sp-hdr">
-          <div>
-            <div class="sp-title"><span class="material-icons-outlined" style="font-size:18px;vertical-align:middle;margin-right:5px;color:#059669">payments</span>Financeiro</div>
-            <div class="sp-sub">Maio 2025 — Visão geral</div>
-          </div>
-          <div style="display:flex;gap:7px">
-            <button class="sp-btn sp-btn-sec"><span class="material-icons-outlined">download</span>Exportar</button>
-            <button class="sp-btn sp-btn-pri"><span class="material-icons-outlined">add</span>Lançamento</button>
-          </div>
-        </div>
-        <div class="sp-kpis" style="grid-template-columns:repeat(4,1fr)">
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="material-icons-outlined">trending_up</span></div>
-            <div><div class="sp-kpi-val">R$28,4k</div><div class="sp-kpi-lbl">Receita</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="material-icons-outlined">trending_down</span></div>
-            <div><div class="sp-kpi-val">R$9,2k</div><div class="sp-kpi-lbl">Despesas</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#005187,#4d82bc)"><span class="material-icons-outlined">account_balance</span></div>
-            <div><div class="sp-kpi-val">R$19,2k</div><div class="sp-kpi-lbl">Lucro</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><span class="material-icons-outlined">savings</span></div>
-            <div><div class="sp-kpi-val">67,6%</div><div class="sp-kpi-lbl">Margem</div></div>
-          </div>
-        </div>
-        <div class="sp-tabs">
-          <div class="sp-tab on"><span class="material-icons-outlined">list_alt</span>Lançamentos</div>
-          <div class="sp-tab"><span class="material-icons-outlined">bar_chart</span>DRE</div>
-          <div class="sp-tab"><span class="material-icons-outlined">percent</span>Taxas</div>
-        </div>
-        <div class="sp-toolbar">
-          <span class="sp-fbtn on">Todos</span>
-          <span class="sp-fbtn">Receitas</span>
-          <span class="sp-fbtn">Despesas</span>
-          <div style="flex:1"></div>
-          <span class="sp-fbtn">Mai/2025</span>
-        </div>
-        <div class="sp-table-wrap">
-          <table class="sp-table">
-            <thead>
-              <tr><th>DATA</th><th>DESCRIÇÃO</th><th>CATEGORIA</th><th>FORMA</th><th>VALOR</th><th>TIPO</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>10/05</td><td>Botox Facial — Ana Paula</td><td>Procedimento</td>
-                <td><span class="sp-badge sap">Crédito 3x</span></td>
-                <td style="color:#059669;font-weight:700">+R$850,00</td>
-                <td><span class="sp-badge green">Receita</span></td>
-              </tr>
-              <tr>
-                <td>10/05</td><td>Limpeza de Pele — Rafael</td><td>Procedimento</td>
-                <td><span class="sp-badge sap">Pix</span></td>
-                <td style="color:#059669;font-weight:700">+R$320,00</td>
-                <td><span class="sp-badge green">Receita</span></td>
-              </tr>
-              <tr>
-                <td>09/05</td><td>Reposição de insumos</td><td>Estoque</td>
-                <td><span class="sp-badge sap">Débito</span></td>
-                <td style="color:#dc2626;font-weight:700">-R$1.240,00</td>
-                <td><span class="sp-badge red">Despesa</span></td>
-              </tr>
-              <tr>
-                <td>09/05</td><td>Skinbooster — Beatriz</td><td>Procedimento</td>
-                <td><span class="sp-badge sap">Dinheiro</span></td>
-                <td style="color:#059669;font-weight:700">+R$620,00</td>
-                <td><span class="sp-badge green">Receita</span></td>
-              </tr>
-              <tr>
-                <td>08/05</td><td>Aluguel da sala</td><td>Fixo</td>
-                <td><span class="sp-badge sap">Transf.</span></td>
-                <td style="color:#dc2626;font-weight:700">-R$2.800,00</td>
-                <td><span class="sp-badge red">Despesa</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- SCREEN 2: ESTOQUE -->
-      <div class="sys-scr" id="scr-2">
-        <div class="sp-hdr">
-          <div>
-            <div class="sp-title"><span class="material-icons-outlined" style="font-size:18px;vertical-align:middle;margin-right:5px;color:#d97706">inventory_2</span>Estoque</div>
-            <div class="sp-sub">28 produtos cadastrados — 4 com estoque baixo</div>
-          </div>
-          <div style="display:flex;gap:7px">
-            <button class="sp-btn sp-btn-sec"><span class="material-icons-outlined">filter_list</span>Filtrar</button>
-            <button class="sp-btn sp-btn-pri"><span class="material-icons-outlined">add</span>Novo Produto</button>
-          </div>
-        </div>
-        <div class="sp-kpis" style="grid-template-columns:repeat(4,1fr)">
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#005187,#4d82bc)"><span class="material-icons-outlined">inventory</span></div>
-            <div><div class="sp-kpi-val">28</div><div class="sp-kpi-lbl">Produtos</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#dc2626,#f87171)"><span class="material-icons-outlined">warning</span></div>
-            <div><div class="sp-kpi-val">4</div><div class="sp-kpi-lbl">Estoque Baixo</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="material-icons-outlined">attach_money</span></div>
-            <div><div class="sp-kpi-val">R$14,7k</div><div class="sp-kpi-lbl">Valor Total</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#d97706,#fbbf24)"><span class="material-icons-outlined">swap_horiz</span></div>
-            <div><div class="sp-kpi-val">47</div><div class="sp-kpi-lbl">Movimentações</div></div>
-          </div>
-        </div>
-        <div class="sp-toolbar">
-          <input class="sp-fi" placeholder="Buscar produto..." style="width:180px">
-          <span class="sp-fbtn on">Todos</span>
-          <span class="sp-fbtn">Ativos</span>
-          <span class="sp-fbtn" style="color:#dc2626;border-color:#dc2626">Críticos</span>
-        </div>
-        <div class="sp-table-wrap">
-          <table class="sp-table">
-            <thead>
-              <tr><th>PRODUTO</th><th>CATEGORIA</th><th>ESTOQUE</th><th>NÍVEL</th><th>PREÇO CLIENTE</th><th>STATUS</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Toxina Botulínica 100U</strong></td><td>Injetáveis</td><td>12 un</td>
-                <td><div class="sp-bar-track"><div class="sp-bar-fill" style="width:70%;background:#059669"></div></div></td>
-                <td>R$380,00</td><td><span class="sp-badge green">OK</span></td>
-              </tr>
-              <tr>
-                <td><strong>Ácido Hialurônico 1ml</strong></td><td>Injetáveis</td><td>5 un</td>
-                <td><div class="sp-bar-track"><div class="sp-bar-fill" style="width:30%;background:#d97706"></div></div></td>
-                <td>R$520,00</td><td><span class="sp-badge yellow">Baixo</span></td>
-              </tr>
-              <tr>
-                <td><strong>Sérum Vitamina C 30ml</strong></td><td>Dermocosméticos</td><td>24 un</td>
-                <td><div class="sp-bar-track"><div class="sp-bar-fill" style="width:90%;background:#059669"></div></div></td>
-                <td>R$89,90</td><td><span class="sp-badge green">OK</span></td>
-              </tr>
-              <tr>
-                <td><strong>Skinbooster 2ml</strong></td><td>Injetáveis</td><td>2 un</td>
-                <td><div class="sp-bar-track"><div class="sp-bar-fill" style="width:12%;background:#dc2626"></div></div></td>
-                <td>R$690,00</td><td><span class="sp-badge red">Crítico</span></td>
-              </tr>
-              <tr>
-                <td><strong>Protetor Solar FPS60</strong></td><td>Dermocosméticos</td><td>18 un</td>
-                <td><div class="sp-bar-track"><div class="sp-bar-fill" style="width:65%;background:#059669"></div></div></td>
-                <td>R$65,00</td><td><span class="sp-badge green">OK</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- SCREEN 3: VENDAS -->
-      <div class="sys-scr" id="scr-3">
-        <div class="sp-hdr">
-          <div>
-            <div class="sp-title"><span class="material-icons-outlined" style="font-size:18px;vertical-align:middle;margin-right:5px;color:#7c3aed">point_of_sale</span>Ponto de Venda</div>
-            <div class="sp-sub">Nova venda — Produto ou procedimento</div>
-          </div>
-          <div style="display:flex;gap:7px">
-            <button class="sp-btn sp-btn-sec"><span class="material-icons-outlined">history</span>Histórico</button>
-          </div>
-        </div>
-        <div class="sp-vnd-grid">
-          <div>
-            <div class="sp-card">
-              <div class="sp-card-title"><span class="material-icons-outlined">person</span>Cliente</div>
-              <div style="display:flex;align-items:center;gap:9px;padding:6px 0">
-                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#005187,#84b6f4);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">BC</div>
-                <div>
-                  <div style="font-size:12px;font-weight:700;color:#002a47">Beatriz Costa</div>
-                  <div style="font-size:10px;color:#4d82bc">Última compra: 05/04/2025</div>
-                </div>
+          <div class="mock-chart-row">
+            <div class="mock-chart">
+              <div class="mock-chart-title">Agenda — Semana</div>
+              <div class="mock-bars">
+                <div class="mock-bar" style="height:60%"></div>
+                <div class="mock-bar" style="height:80%"></div>
+                <div class="mock-bar" style="height:55%"></div>
+                <div class="mock-bar" style="height:90%"></div>
+                <div class="mock-bar" style="height:70%"></div>
+                <div class="mock-bar" style="height:100%"></div>
+                <div class="mock-bar" style="height:75%"></div>
               </div>
             </div>
-            <div class="sp-card">
-              <div class="sp-card-title"><span class="material-icons-outlined">shopping_bag</span>Itens (3)</div>
-              <table style="width:100%;font-size:11px;border-collapse:collapse">
-                <tr style="border-bottom:1px solid rgba(0,81,135,0.06)">
-                  <td style="padding:6px 0;color:#002a47">Sérum Vitamina C 30ml</td>
-                  <td style="text-align:center;color:#4d82bc">×2</td>
-                  <td style="text-align:right;color:#002a47;font-weight:700">R$179,80</td>
-                </tr>
-                <tr style="border-bottom:1px solid rgba(0,81,135,0.06)">
-                  <td style="padding:6px 0;color:#002a47">Protetor Solar FPS60</td>
-                  <td style="text-align:center;color:#4d82bc">×1</td>
-                  <td style="text-align:right;color:#002a47;font-weight:700">R$65,00</td>
-                </tr>
-                <tr>
-                  <td style="padding:6px 0;color:#002a47">Skinbooster 2ml</td>
-                  <td style="text-align:center;color:#4d82bc">×1</td>
-                  <td style="text-align:right;color:#002a47;font-weight:700">R$690,00</td>
-                </tr>
-              </table>
+            <div class="mock-chart">
+              <div class="mock-chart-title">Por Profissional</div>
+              <div class="mock-pie"></div>
             </div>
           </div>
-          <div>
-            <div class="sp-total-box">
-              <div class="sp-total-row"><span>Subtotal</span><span>R$934,80</span></div>
-              <div class="sp-total-row"><span>Forma de Pagamento</span><span style="color:#84b6f4">Crédito 3x</span></div>
-              <div class="sp-total-row"><span>Taxa (3,49%)</span><span style="color:#f87171">+ R$32,62</span></div>
-              <div class="sp-total-row big">
-                <span style="font-size:13px;font-weight:700">TOTAL</span>
-                <span style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:#84b6f4">R$967,42</span>
+          <div class="mock-list">
+            <div class="mock-row"><span><span class="mock-status g"></span>09:00 — Botox Facial</span><span class="mock-row-val">Confirmado</span></div>
+            <div class="mock-row"><span><span class="mock-status y"></span>10:30 — Limpeza de Pele</span><span class="mock-row-val">Pendente</span></div>
+            <div class="mock-row"><span><span class="mock-status g"></span>14:00 — Skinbooster</span><span class="mock-row-val">Confirmado</span></div>
+          </div>
+        </div>
+
+        <!-- Screen 1: Financeiro -->
+        <div class="mod-body" id="mscr-1">
+          <div class="mock-kpi-row">
+            <div class="mock-kpi"><div class="mock-kpi-val">R$28k</div><div class="mock-kpi-lbl">Receita</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">R$9k</div><div class="mock-kpi-lbl">Despesas</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">R$19k</div><div class="mock-kpi-lbl">Lucro</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">67%</div><div class="mock-kpi-lbl">Margem</div></div>
+          </div>
+          <div class="mock-chart-row">
+            <div class="mock-chart">
+              <div class="mock-chart-title">Receita — Meses</div>
+              <div class="mock-bars">
+                <div class="mock-bar" style="height:45%"></div>
+                <div class="mock-bar" style="height:65%"></div>
+                <div class="mock-bar" style="height:55%"></div>
+                <div class="mock-bar" style="height:80%"></div>
+                <div class="mock-bar" style="height:70%"></div>
+                <div class="mock-bar" style="height:90%"></div>
+                <div class="mock-bar" style="height:100%"></div>
               </div>
-              <div style="margin-top:5px;text-align:right;font-size:10px;color:rgba(255,255,255,0.5)">3× de R$322,47</div>
-              <button style="width:100%;margin-top:14px;padding:11px;border:none;border-radius:5px;background:linear-gradient(135deg,#059669,#34d399);color:#fff;font-size:12px;font-weight:700;cursor:pointer">
-                ✓ Confirmar Venda
-              </button>
+            </div>
+            <div class="mock-chart">
+              <div class="mock-chart-title">Por Categoria</div>
+              <div class="mock-pie" style="background:conic-gradient(#005187 0% 60%,#4d82bc 60% 80%,#84b6f4 80% 90%,rgba(132,182,244,0.2) 90% 100%)"></div>
             </div>
           </div>
+          <div class="mock-list">
+            <div class="mock-row"><span><span class="mock-status g"></span>Atendimentos</span><span class="mock-row-val">+ R$18.400</span></div>
+            <div class="mock-row"><span><span class="mock-status g"></span>Produtos Vendidos</span><span class="mock-row-val">+ R$4.800</span></div>
+            <div class="mock-row"><span><span class="mock-status y"></span>Fornecedores</span><span class="mock-row-val">- R$3.200</span></div>
+          </div>
         </div>
-      </div>
 
-      <!-- SCREEN 4: CLIENTES & CRM -->
-      <div class="sys-scr" id="scr-4">
-        <div class="sp-hdr">
-          <div>
-            <div class="sp-title"><span class="material-icons-outlined" style="font-size:18px;vertical-align:middle;margin-right:5px;color:#7c3aed">people</span>Clientes &amp; CRM</div>
-            <div class="sp-sub">312 clientes cadastrados • 47 novos este mês</div>
+        <!-- Screen 2: Estoque -->
+        <div class="mod-body" id="mscr-2">
+          <div class="mock-kpi-row">
+            <div class="mock-kpi"><div class="mock-kpi-val">28</div><div class="mock-kpi-lbl">Produtos</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">4</div><div class="mock-kpi-lbl">Alertas</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">R$14,7k</div><div class="mock-kpi-lbl">Valor Total</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">47</div><div class="mock-kpi-lbl">Movim.</div></div>
           </div>
-          <div style="display:flex;gap:7px">
-            <button class="sp-btn sp-btn-sec"><span class="material-icons-outlined">campaign</span>Marketing</button>
-            <button class="sp-btn sp-btn-pri"><span class="material-icons-outlined">person_add</span>Novo Cliente</button>
+          <div class="mock-chart-row">
+            <div class="mock-chart">
+              <div class="mock-chart-title">Saídas — Semana</div>
+              <div class="mock-bars">
+                <div class="mock-bar" style="height:50%"></div>
+                <div class="mock-bar" style="height:70%"></div>
+                <div class="mock-bar" style="height:40%"></div>
+                <div class="mock-bar" style="height:85%"></div>
+                <div class="mock-bar" style="height:60%"></div>
+                <div class="mock-bar" style="height:75%"></div>
+                <div class="mock-bar" style="height:55%"></div>
+              </div>
+            </div>
+            <div class="mock-chart">
+              <div class="mock-chart-title">Por Categoria</div>
+              <div class="mock-pie" style="background:conic-gradient(#d97706 0% 45%,#fbbf24 45% 70%,#84b6f4 70% 85%,rgba(132,182,244,0.2) 85% 100%)"></div>
+            </div>
+          </div>
+          <div class="mock-list">
+            <div class="mock-row"><span><span class="mock-status g"></span>Toxina Botulínica 100U</span><span class="mock-row-val">12 un — OK</span></div>
+            <div class="mock-row"><span><span class="mock-status y"></span>Ácido Hialurônico 1ml</span><span class="mock-row-val">5 un — Baixo</span></div>
+            <div class="mock-row"><span style="color:#f87171"><span class="mock-status" style="background:#dc2626"></span>Skinbooster 2ml</span><span class="mock-row-val" style="color:#f87171">2 un — Crítico</span></div>
           </div>
         </div>
-        <div class="sp-kpis" style="grid-template-columns:repeat(4,1fr)">
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#005187,#4d82bc)"><span class="material-icons-outlined">people</span></div>
-            <div><div class="sp-kpi-val">312</div><div class="sp-kpi-lbl">Total</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#059669,#34d399)"><span class="material-icons-outlined">person_add</span></div>
-            <div><div class="sp-kpi-val">47</div><div class="sp-kpi-lbl">Novos</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><span class="material-icons-outlined">replay</span></div>
-            <div><div class="sp-kpi-val">94%</div><div class="sp-kpi-lbl">Retorno</div></div>
-          </div>
-          <div class="sp-kpi">
-            <div class="sp-kpi-ico" style="background:linear-gradient(135deg,#d97706,#fbbf24)"><span class="material-icons-outlined">star</span></div>
-            <div><div class="sp-kpi-val">4.8</div><div class="sp-kpi-lbl">Avaliação</div></div>
-          </div>
-        </div>
-        <div class="sp-tabs">
-          <div class="sp-tab on"><span class="material-icons-outlined">list_alt</span>Clientes</div>
-          <div class="sp-tab"><span class="material-icons-outlined">campaign</span>CRM</div>
-          <div class="sp-tab"><span class="material-icons-outlined">assignment</span>Anamnese</div>
-        </div>
-        <div class="sp-toolbar">
-          <input class="sp-fi" placeholder="Buscar cliente..." style="width:180px">
-          <span class="sp-fbtn on">Todos</span>
-          <span class="sp-fbtn">Ativos</span>
-          <span class="sp-fbtn" style="color:#d97706;border-color:#d97706">Aniversariantes</span>
-        </div>
-        <div class="sp-table-wrap">
-          <table class="sp-table">
-            <thead>
-              <tr><th>CLIENTE</th><th>ÚLTIMO ATEND.</th><th>PROCEDIMENTOS</th><th>TICKET MÉD.</th><th>STATUS</th><th></th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#005187,#84b6f4);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">LC</div>Lara Cavalcante</div></td>
-                <td>07/05/2025</td><td>Botox, Skinbooster</td>
-                <td style="font-weight:700">R$740,00</td>
-                <td><span class="sp-badge green">Ativa</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">visibility</span></button></td>
-              </tr>
-              <tr>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">MO</div>Mariana Oliveira</div></td>
-                <td>12/05 🎂</td><td>Limpeza, Peeling</td>
-                <td style="font-weight:700">R$420,00</td>
-                <td><span class="sp-badge yellow">Aniversário</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">visibility</span></button></td>
-              </tr>
-              <tr>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#059669,#34d399);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">TS</div>Talita Santana</div></td>
-                <td>02/05/2025</td><td>Preenchimento Labial</td>
-                <td style="font-weight:700">R$580,00</td>
-                <td><span class="sp-badge green">Ativa</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">visibility</span></button></td>
-              </tr>
-              <tr>
-                <td><div style="display:flex;align-items:center;gap:7px"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#be185d,#f472b6);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">PF</div>Paula Ferreira</div></td>
-                <td>15/03/2025</td><td>Drenagem, Massagem</td>
-                <td style="font-weight:700">R$290,00</td>
-                <td><span class="sp-badge gray">Inativa</span></td>
-                <td><button class="sp-act-btn"><span class="material-icons-outlined">visibility</span></button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
 
+        <!-- Screen 3: Vendas -->
+        <div class="mod-body" id="mscr-3">
+          <div class="mock-kpi-row">
+            <div class="mock-kpi"><div class="mock-kpi-val">R$2,4k</div><div class="mock-kpi-lbl">Hoje</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">8</div><div class="mock-kpi-lbl">Vendas</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">R$300</div><div class="mock-kpi-lbl">Ticket Médio</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">3x</div><div class="mock-kpi-lbl">Parcelamento</div></div>
+          </div>
+          <div class="mock-chart-row">
+            <div class="mock-chart">
+              <div class="mock-chart-title">Vendas — Semana</div>
+              <div class="mock-bars">
+                <div class="mock-bar" style="height:55%"></div>
+                <div class="mock-bar" style="height:75%"></div>
+                <div class="mock-bar" style="height:60%"></div>
+                <div class="mock-bar" style="height:90%"></div>
+                <div class="mock-bar" style="height:70%"></div>
+                <div class="mock-bar" style="height:85%"></div>
+                <div class="mock-bar" style="height:100%"></div>
+              </div>
+            </div>
+            <div class="mock-chart">
+              <div class="mock-chart-title">Por Pagamento</div>
+              <div class="mock-pie" style="background:conic-gradient(#059669 0% 40%,#34d399 40% 65%,#84b6f4 65% 80%,rgba(132,182,244,0.2) 80% 100%)"></div>
+            </div>
+          </div>
+          <div class="mock-list">
+            <div class="mock-row"><span><span class="mock-status g"></span>Sérum Vitamina C 30ml ×2</span><span class="mock-row-val">R$179,80</span></div>
+            <div class="mock-row"><span><span class="mock-status g"></span>Skinbooster 2ml ×1</span><span class="mock-row-val">R$690,00</span></div>
+            <div class="mock-row"><span><span class="mock-status g"></span>Protetor Solar FPS60 ×1</span><span class="mock-row-val">R$65,00</span></div>
+          </div>
+        </div>
+
+        <!-- Screen 4: Clientes & CRM -->
+        <div class="mod-body" id="mscr-4">
+          <div class="mock-kpi-row">
+            <div class="mock-kpi"><div class="mock-kpi-val">312</div><div class="mock-kpi-lbl">Clientes</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">47</div><div class="mock-kpi-lbl">Novos</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">94%</div><div class="mock-kpi-lbl">Retorno</div></div>
+            <div class="mock-kpi"><div class="mock-kpi-val">4.8★</div><div class="mock-kpi-lbl">Avaliação</div></div>
+          </div>
+          <div class="mock-chart-row">
+            <div class="mock-chart">
+              <div class="mock-chart-title">Novos Clientes</div>
+              <div class="mock-bars">
+                <div class="mock-bar" style="height:45%"></div>
+                <div class="mock-bar" style="height:60%"></div>
+                <div class="mock-bar" style="height:50%"></div>
+                <div class="mock-bar" style="height:75%"></div>
+                <div class="mock-bar" style="height:65%"></div>
+                <div class="mock-bar" style="height:85%"></div>
+                <div class="mock-bar" style="height:100%"></div>
+              </div>
+            </div>
+            <div class="mock-chart">
+              <div class="mock-chart-title">Segmentos</div>
+              <div class="mock-pie" style="background:conic-gradient(#7c3aed 0% 50%,#a78bfa 50% 75%,#84b6f4 75% 90%,rgba(132,182,244,0.2) 90% 100%)"></div>
+            </div>
+          </div>
+          <div class="mock-list">
+            <div class="mock-row"><span><span class="mock-status g"></span>Lara Cavalcante — Botox</span><span class="mock-row-val">VIP</span></div>
+            <div class="mock-row"><span><span class="mock-status y"></span>Mariana Oliveira</span><span class="mock-row-val">🎂 Aniversário</span></div>
+            <div class="mock-row"><span><span class="mock-status g"></span>Talita Santana — Preench.</span><span class="mock-row-val">Ativa</span></div>
+          </div>
+        </div>
+
+      </div>
     </div>
+    <div class="mockup-shadow"></div>
   </div>
 </section>
 
@@ -1494,15 +1279,15 @@ window.addEventListener('scroll', function() {
 })();
 
 // ===== MODULES TABS =====
+var _modTitles = ['Agendamentos — Clínica Estética','Financeiro — Clínica Estética','Estoque — Clínica Estética','Vendas — Clínica Estética','Clientes & CRM — Clínica Estética'];
 function switchScr(idx, btn) {
-  document.querySelectorAll('.sys-scr').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.mod-body').forEach(function(s) { s.classList.remove('active'); });
   document.querySelectorAll('.mod-tb').forEach(function(b) { b.classList.remove('active'); });
-  var scr = document.getElementById('scr-' + idx);
+  var scr = document.getElementById('mscr-' + idx);
   if (scr) { scr.classList.add('active'); }
   if (btn) { btn.classList.add('active'); }
-  var urlBar = document.querySelector('.sys-url-bar');
-  var urls = ['app.clinicagest.com.br/agenda','app.clinicagest.com.br/financeiro','app.clinicagest.com.br/estoque','app.clinicagest.com.br/vendas','app.clinicagest.com.br/clientes'];
-  if (urlBar && urls[idx]) { urlBar.textContent = urls[idx]; }
+  var titleBar = document.getElementById('mod-title-bar');
+  if (titleBar) { titleBar.textContent = _modTitles[idx] || ''; }
 }
 
 // ===== COUNTER ANIMATION =====
