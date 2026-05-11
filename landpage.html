@@ -705,6 +705,23 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
 .pf-check.off .material-icons-outlined{color:rgba(0,42,71,0.3)}
 
 /* ===========================
+   FUNCIONALIDADES
+=========================== */
+#funcionalidades{padding:100px 5%;background:#fff}
+.func-title{font-family:"Lora",serif;font-size:clamp(26px,3vw,42px);font-weight:700;color:#002a47;margin-bottom:60px}
+.func-category{
+  display:grid;grid-template-columns:200px 1fr;gap:0 40px;
+  border-top:2px solid rgba(0,81,135,0.08);padding:40px 0;align-items:start;
+}
+.func-cat-left{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.func-cat-ico{width:68px;height:68px;border-radius:14px;border:2px solid rgba(0,81,135,0.12);display:flex;align-items:center;justify-content:center;background:#f0f7ff}
+.func-cat-ico .material-icons-outlined{font-size:32px;color:#005187}
+.func-cat-name{font-family:"Lora",serif;font-size:19px;font-weight:700;color:#002a47}
+.func-list{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.func-item{padding:12px 20px 12px 0;border-bottom:1px solid rgba(0,81,135,0.07);font-size:14px;color:#005187}
+.func-item:nth-last-child(-n+2){border-bottom:none}
+
+/* ===========================
    RESPONSIVE
 =========================== */
 @media(max-width:1024px){
@@ -718,6 +735,11 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
   .mod-tabbar{flex-wrap:wrap}
   .plans-grid{grid-template-columns:1fr}
   .plan-card.featured{transform:none}
+  .func-category{grid-template-columns:1fr}
+  .func-cat-left{flex-direction:row;align-items:center;margin-bottom:16px}
+  .func-list{grid-template-columns:1fr}
+  .func-item:nth-last-child(-n+2){border-bottom:1px solid rgba(0,81,135,0.07)}
+  .func-item:last-child{border-bottom:none}
   .steps-grid{grid-template-columns:1fr 1fr;gap:30px}
   .steps-grid::before{display:none}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -761,10 +783,10 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
     </div>
   </div>
   <ul class="nav-links">
-    <li><a href="#features">Funcionalidades</a></li>
+    <li><a href="#features">Recursos</a></li>
     <li><a href="#modules">Módulos</a></li>
+    <li><a href="#funcionalidades">Funcionalidades</a></li>
     <li><a href="#planos">Planos</a></li>
-    <li><a href="#depoimentos">Depoimentos</a></li>
   </ul>
   <a href="#cta" class="nav-cta"><span class="material-icons-outlined">rocket_launch</span>Solicitar Demo</a>
 </nav>
@@ -1197,8 +1219,8 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
       <div class="plan-pricing">
         <div class="plan-price">
           <span class="plan-currency">R$</span>
-          <span class="plan-val">99</span>
-          <span class="plan-per">,99/mês</span>
+          <span class="plan-val">150</span>
+          <span class="plan-per">/mês</span>
         </div>
         <div class="plan-period-note">Cobrado mensalmente</div>
         <a href="#cta" style="display:block;margin-top:18px;padding:13px;border-radius:50px;text-align:center;background:linear-gradient(135deg,#1e40af,#4d82bc);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s">Começar agora</a>
@@ -1228,7 +1250,7 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
       <div class="plan-pricing">
         <div class="plan-price">
           <span class="plan-currency">R$</span>
-          <span class="plan-val">199</span>
+          <span class="plan-val">300</span>
           <span class="plan-per">/mês</span>
         </div>
         <div class="plan-period-note">Cobrado mensalmente</div>
@@ -1258,7 +1280,7 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
       <div class="plan-pricing">
         <div class="plan-price">
           <span class="plan-currency">R$</span>
-          <span class="plan-val">299</span>
+          <span class="plan-val">450</span>
           <span class="plan-per">/mês</span>
         </div>
         <div class="plan-period-note">Cobrado mensalmente</div>
@@ -1275,6 +1297,148 @@ nav{background:rgba(255,255,255,0.96)!important;border-bottom-color:rgba(0,81,13
     </div>
 
   </div>
+</section>
+
+<!-- ===== FUNCIONALIDADES ===== -->
+<section id="funcionalidades">
+  <h2 class="func-title">Funcionalidades:</h2>
+
+  <!-- AGENDA -->
+  <div class="func-category">
+    <div class="func-cat-left">
+      <div class="func-cat-ico"><span class="material-icons-outlined">calendar_month</span></div>
+      <div class="func-cat-name">Agenda:</div>
+    </div>
+    <div class="func-list">
+      <div class="func-item">Múltiplas agendas</div>
+      <div class="func-item">Escala de atendimento</div>
+      <div class="func-item">Confirmação manual de agendamento</div>
+      <div class="func-item">Alteração em massa da agenda</div>
+      <div class="func-item">Confirmação automática via WhatsApp</div>
+      <div class="func-item">Consulta de disponibilidade</div>
+      <div class="func-item">Relatórios de agendamentos</div>
+      <div class="func-item">Pacote de procedimentos</div>
+      <div class="func-item">Gestão de compromissos</div>
+      <div class="func-item">Lista de espera</div>
+      <div class="func-item">Bloqueio de horários</div>
+      <div class="func-item">Reagendamento facilitado</div>
+    </div>
+  </div>
+
+  <!-- CLIENTES -->
+  <div class="func-category">
+    <div class="func-cat-left">
+      <div class="func-cat-ico"><span class="material-icons-outlined">person</span></div>
+      <div class="func-cat-name">Clientes:</div>
+    </div>
+    <div class="func-list">
+      <div class="func-item">Cadastro completo de clientes</div>
+      <div class="func-item">Histórico de atendimentos</div>
+      <div class="func-item">Ficha de anamnese personalizada</div>
+      <div class="func-item">Fotos e documentos do paciente</div>
+      <div class="func-item">Contratos digitais</div>
+      <div class="func-item">Termos de consentimento</div>
+      <div class="func-item">Assinatura eletrônica</div>
+      <div class="func-item">Segmentação de clientes</div>
+      <div class="func-item">Modelos de atestados</div>
+      <div class="func-item">Prontuário eletrônico personalizável</div>
+      <div class="func-item">Armazenamento de imagens e documentos</div>
+      <div class="func-item">Controle de retorno</div>
+    </div>
+  </div>
+
+  <!-- FINANCEIRO -->
+  <div class="func-category">
+    <div class="func-cat-left">
+      <div class="func-cat-ico"><span class="material-icons-outlined">payments</span></div>
+      <div class="func-cat-name">Financeiro:</div>
+    </div>
+    <div class="func-list">
+      <div class="func-item">Lançamentos de receitas e despesas</div>
+      <div class="func-item">DRE simplificado</div>
+      <div class="func-item">Controle por forma de pagamento</div>
+      <div class="func-item">Taxas por bandeira de cartão</div>
+      <div class="func-item">Parcelamento com juros automático</div>
+      <div class="func-item">Relatórios financeiros</div>
+      <div class="func-item">Fluxo de caixa</div>
+      <div class="func-item">Vendas a prazo com juros simples</div>
+      <div class="func-item">Controle de comissões</div>
+      <div class="func-item">Exportação de relatórios</div>
+    </div>
+  </div>
+
+  <!-- ESTOQUE -->
+  <div class="func-category">
+    <div class="func-cat-left">
+      <div class="func-cat-ico"><span class="material-icons-outlined">inventory_2</span></div>
+      <div class="func-cat-name">Estoque:</div>
+    </div>
+    <div class="func-list">
+      <div class="func-item">Cadastro de produtos</div>
+      <div class="func-item">Controle de entrada e saída</div>
+      <div class="func-item">Alertas de estoque mínimo</div>
+      <div class="func-item">Preço cliente e preço profissional</div>
+      <div class="func-item">Histórico de movimentações</div>
+      <div class="func-item">Relatório de inventário</div>
+      <div class="func-item">Categorização de produtos</div>
+      <div class="func-item">Controle de lotes e validade</div>
+    </div>
+  </div>
+
+  <!-- VENDAS -->
+  <div class="func-category">
+    <div class="func-cat-left">
+      <div class="func-cat-ico"><span class="material-icons-outlined">point_of_sale</span></div>
+      <div class="func-cat-name">Vendas:</div>
+    </div>
+    <div class="func-list">
+      <div class="func-item">Ponto de venda integrado</div>
+      <div class="func-item">Múltiplas formas de pagamento</div>
+      <div class="func-item">Parcelamento no cartão de crédito</div>
+      <div class="func-item">Vendas a prazo</div>
+      <div class="func-item">Histórico de vendas por cliente</div>
+      <div class="func-item">Associação de venda ao atendimento</div>
+      <div class="func-item">Desconto e acréscimo</div>
+      <div class="func-item">Relatório de vendas por período</div>
+    </div>
+  </div>
+
+  <!-- CRM & MARKETING -->
+  <div class="func-category">
+    <div class="func-cat-left">
+      <div class="func-cat-ico"><span class="material-icons-outlined">campaign</span></div>
+      <div class="func-cat-name">CRM & Marketing:</div>
+    </div>
+    <div class="func-list">
+      <div class="func-item">Campanhas via WhatsApp</div>
+      <div class="func-item">Disparos automáticos de aniversário</div>
+      <div class="func-item">Segmentação de público-alvo</div>
+      <div class="func-item">Retorno de clientes inativos</div>
+      <div class="func-item">Atendente virtual no WhatsApp</div>
+      <div class="func-item">Análise de engajamento</div>
+      <div class="func-item">Promoções e cupons</div>
+      <div class="func-item">Histórico de campanhas enviadas</div>
+    </div>
+  </div>
+
+  <!-- RELATÓRIOS -->
+  <div class="func-category">
+    <div class="func-cat-left">
+      <div class="func-cat-ico"><span class="material-icons-outlined">bar_chart</span></div>
+      <div class="func-cat-name">Relatórios:</div>
+    </div>
+    <div class="func-list">
+      <div class="func-item">Relatório de receita por período</div>
+      <div class="func-item">Relatório de procedimentos realizados</div>
+      <div class="func-item">Desempenho por profissional</div>
+      <div class="func-item">Taxa de retorno de clientes</div>
+      <div class="func-item">Análise de serviços mais rentáveis</div>
+      <div class="func-item">Relatório de estoque e movimentações</div>
+      <div class="func-item">Exportação em PDF e Excel</div>
+      <div class="func-item">Dashboard com indicadores em tempo real</div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ===== HOW IT WORKS ===== -->
